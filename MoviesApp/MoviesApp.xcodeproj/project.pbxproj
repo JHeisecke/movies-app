@@ -12,6 +12,7 @@
 		009649512C6E491E00B78F05 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009649502C6E491D00B78F05 /* SearchBar.swift */; };
 		009649552C6E502D00B78F05 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009649542C6E502D00B78F05 /* MainView.swift */; };
 		009649582C6E534600B78F05 /* MovieCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009649572C6E534600B78F05 /* MovieCellView.swift */; };
+		0096495D2C6E616300B78F05 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096495C2C6E616300B78F05 /* CategoriesView.swift */; };
 		00D88DD52C6E3C6E00B3FAF0 /* MoviesAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D88DD42C6E3C6E00B3FAF0 /* MoviesAppApp.swift */; };
 		00D88DD72C6E3C6E00B3FAF0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D88DD62C6E3C6E00B3FAF0 /* HomeView.swift */; };
 		00D88DD92C6E3C7000B3FAF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D88DD82C6E3C7000B3FAF0 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		009649502C6E491D00B78F05 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		009649542C6E502D00B78F05 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		009649572C6E534600B78F05 /* MovieCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellView.swift; sourceTree = "<group>"; };
+		0096495C2C6E616300B78F05 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		00D88DD12C6E3C6E00B3FAF0 /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D88DD42C6E3C6E00B3FAF0 /* MoviesAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAppApp.swift; sourceTree = "<group>"; };
 		00D88DD62C6E3C6E00B3FAF0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -98,9 +100,9 @@
 		0096494A2C6E453B00B78F05 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				0096495B2C6E613400B78F05 /* Components */,
 				00D88DD62C6E3C6E00B3FAF0 /* HomeView.swift */,
 				0096494E2C6E46DD00B78F05 /* HomeViewModel.swift */,
-				009649502C6E491D00B78F05 /* SearchBar.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -108,6 +110,7 @@
 		0096494B2C6E454100B78F05 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				009649502C6E491D00B78F05 /* SearchBar.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -133,6 +136,14 @@
 				009649572C6E534600B78F05 /* MovieCellView.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		0096495B2C6E613400B78F05 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0096495C2C6E616300B78F05 /* CategoriesView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		00D88DC82C6E3C6E00B3FAF0 = {
@@ -380,6 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0096495D2C6E616300B78F05 /* CategoriesView.swift in Sources */,
 				00D88E012C6E3D6900B3FAF0 /* Configuration.swift in Sources */,
 				009649552C6E502D00B78F05 /* MainView.swift in Sources */,
 				00D88DD72C6E3C6E00B3FAF0 /* HomeView.swift in Sources */,

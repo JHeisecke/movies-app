@@ -19,21 +19,28 @@ struct MainView: View {
                     content:  {
                 HomeView(viewModel: .init())
                     .tabItem {
-                        Label("Home", systemImage: "house")
+                        Image(systemName: "house")
                     }
                     .tag(Tab.home)
                 Text("Search")
                     .tabItem {
-                        Label("Search", systemImage: "magnifyingglass")
+                        Image(systemName: "magnifyingglass")
                     }
                     .tag(Tab.search)
                 Text("Watch list")
                     .tabItem {
-                        Label("Watch list", systemImage: "bookmark")
+                        Image(systemName: "bookmark")
                     }
                     .tag(Tab.watchlist)
             })
+            .background(Color.skyCaptain)
+            
         }
+        .onAppear(perform: {
+            UITabBar.appearance().backgroundColor = UIColor.indianInk
+            UITabBar.appearance().unselectedItemTintColor = UIColor.midnightGrey
+            
+        })
     }
     
     // MARK: - Types
