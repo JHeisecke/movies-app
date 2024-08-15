@@ -25,8 +25,7 @@ final class APIClient: NSObject, APIClientProtocol {
 #if DEBUG
         if let mockfile = endpoint.mockFile, let path = Bundle.main.path(forResource: mockfile, ofType: "json") {
             let url = URL(fileURLWithPath: path)
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let data = try Data(contentsOf: url, options: .uncached)
+            let data = try Data(contentsOf: url)
             let decodedData = try decoder.decode(T.self, from: data)
             try? await Task.sleep(nanoseconds: 2 * 1_000_000_000)
             

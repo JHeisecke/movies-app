@@ -11,13 +11,15 @@ struct MainView: View {
     
     // MARK: - Properties
     
+    let viewModel: MainViewModel
+    
     @State private var activeTab: Tab = .home
     
     var body: some View {
         NavigationStack {
             TabView(selection: $activeTab,
                     content:  {
-                HomeView(viewModel: .init())
+                HomeView(viewModel: viewModel.homeViewModel)
                     .tabItem {
                         Image(systemName: "house")
                     }
@@ -53,5 +55,5 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView()
+    MainView(viewModel: MainViewModel())
 }

@@ -12,9 +12,9 @@ struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
     
     let columns: [GridItem] = [
-        GridItem(.fixed(Constants.subCategoryPosterWidth), spacing: 15, alignment: .center),
-        GridItem(.fixed(Constants.subCategoryPosterWidth), spacing: 15, alignment: .center),
-        GridItem(.fixed(Constants.subCategoryPosterWidth), spacing: 15, alignment: .center)
+        GridItem(.fixed(PosterSize.small.width), spacing: 15, alignment: .center),
+        GridItem(.fixed(PosterSize.small.width), spacing: 15, alignment: .center),
+        GridItem(.fixed(PosterSize.small.width), spacing: 15, alignment: .center)
     ]
     
     var body: some View {
@@ -30,6 +30,9 @@ struct HomeView: View {
             }
         }
         .background(Color.skyCaptain)
+        .task {
+            await viewModel.onAppear()
+        }
     }
     
     var popularSection: some View {
@@ -39,14 +42,25 @@ struct HomeView: View {
                 .fontWeight(.semibold)
                 .padding(.horizontal, Constants.padding)
                 .foregroundStyle(.white)
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 20) {
-                    ForEach(0..<10, id: \.self) { _ in
-                        MovieCellView(name: "Black Panther", url: URL(string: "https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/black-panther-web.jpg"), width: Constants.popularPosterWidth)
+            switch viewModel.popularMovies {
+            case .loading:
+                HStack {
+                    ForEach(0..<6, id: \.self) { _ in
+                        MovieCellView(name:"", path: nil, size: PosterSize.medium)
                     }
                 }
+            case .data(let result):
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(spacing: 20) {
+                        ForEach(result.movies, id: \.id) { movie in
+                            MovieCellView(name: movie.title, path: movie.posterPath, size: PosterSize.medium)
+                        }
+                    }
+                }
+                .contentMargins(.leading, Constants.padding)
+            case .error:
+                Text("An error occured :(")
             }
-            .contentMargins(.leading, Constants.padding)
         }
     }
     
@@ -55,7 +69,7 @@ struct HomeView: View {
             CategoriesView(onTabChange: viewModel.categoryChange)
             LazyVGrid(columns: columns, content: {
                 ForEach(0..<6, id: \.self) { _ in
-                    MovieCellView(name: "Black Panther", url: URL(string: "https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/black-panther-web.jpg"), width: Constants.subCategoryPosterWidth)
+                    MovieCellView(name: "Black Panther", path: nil, size: PosterSize.small)
                 }
             })
             .padding(.horizontal, Constants.padding)
@@ -67,11 +81,9 @@ struct HomeView: View {
     
     struct Constants {
         static let padding: CGFloat = 15
-        static let popularPosterWidth: CGFloat = 200
-        static let subCategoryPosterWidth: CGFloat = 110
     }
 }
 
 #Preview {
-    HomeView(viewModel: .init())
+    HomeView(viewModel: .init(getPopularUseCase: GetPopularMoviesUseCase(moviesRepository: MoviesRepository()), getUpcomingUseCase: GetUpcomingMoviesUseCase(moviesRepository: MoviesRepository()), getTopRatedUseCase: GetTopRatedMoviesUseCase(moviesRepository: MoviesRepository()), getNowPlayingUseCase: GetNowPlayingMoviesUseCase(moviesRepository: MoviesRepository())))
 }

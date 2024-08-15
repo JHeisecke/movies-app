@@ -71,7 +71,7 @@ enum OriginalLanguage: String, Codable {
 
 extension MoviesResponse {
     func asEntity() -> PageableMoviesList {
-        var movies: MoviesList = self.asEntity()
+        let movies: MoviesList = self.asEntity()
         let hasMorePages = totalPages != nil && page ?? 0 < totalPages ?? 0
         return PageableMoviesList(movies: movies, hasNextPage: hasMorePages)
     }
@@ -89,6 +89,7 @@ extension MoviesResponse {
 extension MovieResponse {
     func asEntity() -> MovieEntity? {
         let releaseData = DateFormatter().stringToDate_yyyyMMdd(releaseDate)
-        return .init(id: id, title: title ?? "Untitles Project", description: nil, posterPath: posterPath, releaseDate: releaseData, voteAverage: voteAverage, genres: nil)
+        print(self)
+        return .init(id: id, title: title ?? String(localized: "Untitled Project"), description: overview, posterPath: posterPath, releaseDate: releaseData, voteAverage: voteAverage, genres: nil)
     }
 }

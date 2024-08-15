@@ -10,39 +10,43 @@ import SwiftUI
 struct MovieCellView: View {
     
     var name: String
-    var url: URL?
+    var path: String?
     
-    let width: CGFloat
+    let size: PosterSize
     let ratio = 1.44
     
     var height: CGFloat {
-        width*ratio
+        size.width*ratio
     }
     
     var body: some View {
-        AsyncImage(url: url) { phase in
+        AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/\(size.rawValue)/\(path ?? "")")) { phase in
             switch phase {
             case .success(let image):
                 image
                     .resizable()
-                    .frame(width: width, height: height)
+                    .frame(width: size.width, height: height)
             default:
-                Image("posterPlaceholder")
-                    .resizable()
-                    .frame(width: width, height: height)
-                    .overlay(alignment: .top) {
-                        Text(name)
-                            .font(.title)
-                            .minimumScaleFactor(0.1)
-                            .fontWeight(.bold)
-                            .foregroundStyle(.white)
-                            .multilineTextAlignment(.center)
-                            .italic()
-                            .padding()
-                    }
+                placeholder
             }
         }
         .clipShape(RoundedRectangle(cornerRadius: 14))
+    }
+    
+    var placeholder: some View {
+        Image("posterPlaceholder")
+            .resizable()
+            .frame(width: size.width, height: height)
+            .overlay(alignment: .top) {
+                Text(name)
+                    .font(.title)
+                    .minimumScaleFactor(0.1)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                    .multilineTextAlignment(.center)
+                    .italic()
+                    .padding()
+            }
     }
 }
 
@@ -50,8 +54,7 @@ struct MovieCellView: View {
     ZStack {
         Color.skyCaptain
         VStack(spacing: 10) {
-            MovieCellView(name: "Black Panther", url: URL(string: "https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/black-panther-web.jpg"), width: 144)
-            MovieCellView(name: "Black Panther dsjad ldsakd ldka", url: URL(string: "https://www.washingtonpost.com/graphics/2019/entertainment/osfcar-nominees-movie-poster-design/img/black-panther-web.jpg"), width: 95)
+            MovieCellView(name: "Black Panther", path: "/6yK9hmS641NMwRkR1wWAALWI34t.jpg", size: PosterSize.medium)
         }
     }
 }

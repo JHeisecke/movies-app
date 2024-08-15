@@ -29,10 +29,12 @@ extension Endpoint {
     var host: String { "api.themoviedb.org" }
     var requestType: RequestType { .get }
     var body: [AnyHashable: Any]? { nil }
+    var queryParams: [URLQueryItem]? { nil }
+    var mockFile: String? { nil }
     var headers: [String: String] {
         let internalHeaders = [
             "accept": "application/json",
-            "Authorization": "Bearer \(Configuration.tmdbApiKey)"
+            "Authorization": "Bearer \(Configuration.tmdbAccessToken)"
         ]
         return internalHeaders
     }
