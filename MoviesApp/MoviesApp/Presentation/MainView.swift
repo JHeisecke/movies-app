@@ -14,24 +14,26 @@ struct MainView: View {
     @State private var activeTab: Tab = .home
     
     var body: some View {
-        TabView(selection: $activeTab,
-                content:  {
-            HomeView(viewModel: .init())
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }
-                .tag(Tab.home)
-            Text("Search")
-                .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
-                }
-                .tag(Tab.search)
-            Text("Watch list")
-                .tabItem {
-                    Label("Watch list", systemImage: "bookmark")
-                }
-                .tag(Tab.watchlist)
-        })
+        NavigationStack {
+            TabView(selection: $activeTab,
+                    content:  {
+                HomeView(viewModel: .init())
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                    .tag(Tab.home)
+                Text("Search")
+                    .tabItem {
+                        Label("Search", systemImage: "magnifyingglass")
+                    }
+                    .tag(Tab.search)
+                Text("Watch list")
+                    .tabItem {
+                        Label("Watch list", systemImage: "bookmark")
+                    }
+                    .tag(Tab.watchlist)
+            })
+        }
     }
     
     // MARK: - Types
