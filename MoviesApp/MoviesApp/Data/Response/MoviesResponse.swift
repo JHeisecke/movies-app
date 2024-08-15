@@ -11,11 +11,11 @@ import Foundation
 // MARK: - MoviesResponse
 
 struct MoviesResponse: Codable {
-    let dates: Dates?
+    let dates: AvailableDates?
     let page: Int?
-    let results: [Result]?
+    let results: [MovieResponse]
     let totalPages, totalResults: Int?
-
+    
     enum CodingKeys: String, CodingKey {
         case dates, page, results
         case totalPages = "total_pages"
@@ -25,17 +25,17 @@ struct MoviesResponse: Codable {
 
 // MARK: - Dates
 
-struct Dates: Codable {
+struct AvailableDates: Codable {
     let maximum, minimum: String?
 }
 
 // MARK: - Result
 
-struct Result: Codable {
+struct MovieResponse: Codable {
     let adult: Bool?
     let backdropPath: String?
     let genreIDS: [Int]?
-    let id: Int?
+    let id: Int
     let originalLanguage: OriginalLanguage?
     let originalTitle, overview: String?
     let popularity: Double?
@@ -43,7 +43,7 @@ struct Result: Codable {
     let video: Bool?
     let voteAverage: Double?
     let voteCount: Int?
-
+    
     enum CodingKeys: String, CodingKey {
         case adult
         case backdropPath = "backdrop_path"
@@ -65,4 +65,30 @@ enum OriginalLanguage: String, Codable {
     case es = "es"
     case fr = "fr"
     case zh = "zh"
+}
+
+// MARK: - As Entity
+
+extension MoviesResponse {
+    func asEntity() -> PageableMoviesList {
+        var movies: MoviesList = self.asEntity()
+        let hasMorePages = totalPages != nil && page ?? 0 < totalPages ?? 0
+        return PageableMoviesList(movies: movies, hasNextPage: hasMorePages)
+    }
+    
+    func asEntity() -> MoviesList {
+        var movies: MoviesList = []
+        for response in results {
+            guard let movie = response.asEntity() else { break }
+            movies.append(movie)
+        }
+        return movies
+    }
+}
+
+extension MovieResponse {
+    func asEntity() -> MovieEntity? {
+        let releaseData = DateFormatter().stringToDate_yyyyMMdd(releaseDate)
+        return .init(id: id, title: title ?? "Untitles Project", description: nil, posterPath: posterPath, releaseDate: releaseData, voteAverage: voteAverage, genres: nil)
+    }
 }

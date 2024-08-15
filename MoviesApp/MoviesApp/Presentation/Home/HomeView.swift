@@ -34,7 +34,7 @@ struct HomeView: View {
     
     var popularSection: some View {
         VStack(alignment: .leading) {
-            Text("Popular")
+            Text(MovieCategory.popular.text)
                 .font(.title3)
                 .fontWeight(.semibold)
                 .padding(.horizontal, Constants.padding)

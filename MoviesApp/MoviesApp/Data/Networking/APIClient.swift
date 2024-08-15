@@ -23,7 +23,6 @@ final class APIClient: NSObject, APIClientProtocol {
     
     func performRequest<T: Decodable>(endpoint: Endpoint, decoder: JSONDecoder = JSONDecoder()) async throws -> T {
 #if DEBUG
-        
         if let mockfile = endpoint.mockFile, let path = Bundle.main.path(forResource: mockfile, ofType: "json") {
             let url = URL(fileURLWithPath: path)
             decoder.keyDecodingStrategy = .convertFromSnakeCase
