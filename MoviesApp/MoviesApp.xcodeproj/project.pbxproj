@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		009649492C6E445500B78F05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009649472C6E445500B78F05 /* LaunchScreen.storyboard */; };
+		0096494F2C6E46DD00B78F05 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096494E2C6E46DD00B78F05 /* HomeViewModel.swift */; };
 		00D88DD52C6E3C6E00B3FAF0 /* MoviesAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D88DD42C6E3C6E00B3FAF0 /* MoviesAppApp.swift */; };
-		00D88DD72C6E3C6E00B3FAF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D88DD62C6E3C6E00B3FAF0 /* ContentView.swift */; };
+		00D88DD72C6E3C6E00B3FAF0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D88DD62C6E3C6E00B3FAF0 /* HomeView.swift */; };
 		00D88DD92C6E3C7000B3FAF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D88DD82C6E3C7000B3FAF0 /* Assets.xcassets */; };
 		00D88DDC2C6E3C7000B3FAF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D88DDB2C6E3C7000B3FAF0 /* Preview Assets.xcassets */; };
 		00D88DE62C6E3C7000B3FAF0 /* MoviesAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D88DE52C6E3C7000B3FAF0 /* MoviesAppTests.swift */; };
 		00D88DF02C6E3C7000B3FAF0 /* MoviesAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D88DEF2C6E3C7000B3FAF0 /* MoviesAppUITests.swift */; };
 		00D88DF22C6E3C7000B3FAF0 /* MoviesAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D88DF12C6E3C7000B3FAF0 /* MoviesAppUITestsLaunchTests.swift */; };
 		00D88E012C6E3D6900B3FAF0 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D88E002C6E3D6900B3FAF0 /* Configuration.swift */; };
+		00D88E0C2C6E420200B3FAF0 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D88E0B2C6E420200B3FAF0 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		009649472C6E445500B78F05 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0096494E2C6E46DD00B78F05 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		00D88DD12C6E3C6E00B3FAF0 /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D88DD42C6E3C6E00B3FAF0 /* MoviesAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAppApp.swift; sourceTree = "<group>"; };
-		00D88DD62C6E3C6E00B3FAF0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		00D88DD62C6E3C6E00B3FAF0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		00D88DD82C6E3C7000B3FAF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00D88DDB2C6E3C7000B3FAF0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		00D88DE12C6E3C7000B3FAF0 /* MoviesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +53,7 @@
 		00D88DFE2C6E3D2100B3FAF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00D88E002C6E3D6900B3FAF0 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		00D88E062C6E3EAD00B3FAF0 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		00D88E0B2C6E420200B3FAF0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +81,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		009649482C6E445500B78F05 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				009649472C6E445500B78F05 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		0096494A2C6E453B00B78F05 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				00D88DD62C6E3C6E00B3FAF0 /* HomeView.swift */,
+				0096494E2C6E46DD00B78F05 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0096494B2C6E454100B78F05 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		0096494C2C6E454900B78F05 /* MovieDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MovieDetail;
+			sourceTree = "<group>";
+		};
+		0096494D2C6E454F00B78F05 /* WatchList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WatchList;
+			sourceTree = "<group>";
+		};
 		00D88DC82C6E3C6E00B3FAF0 = {
 			isa = PBXGroup;
 			children = (
@@ -102,7 +146,8 @@
 				00D88E042C6E3E2700B3FAF0 /* Data */,
 				00D88E032C6E3E2100B3FAF0 /* Domain */,
 				00D88E022C6E3E0800B3FAF0 /* Presentation */,
-				00D88DD82C6E3C7000B3FAF0 /* Assets.xcassets */,
+				00D88E0A2C6E41ED00B3FAF0 /* Resources */,
+				009649482C6E445500B78F05 /* LaunchScreen */,
 				00D88DDA2C6E3C7000B3FAF0 /* Preview Content */,
 			);
 			path = MoviesApp;
@@ -138,8 +183,6 @@
 			children = (
 				00D88E052C6E3E9500B3FAF0 /* Configuration */,
 				00D88DD42C6E3C6E00B3FAF0 /* MoviesAppApp.swift */,
-				00D88DFE2C6E3D2100B3FAF0 /* Info.plist */,
-				00D88E002C6E3D6900B3FAF0 /* Configuration.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -147,7 +190,10 @@
 		00D88E022C6E3E0800B3FAF0 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				00D88DD62C6E3C6E00B3FAF0 /* ContentView.swift */,
+				0096494C2C6E454900B78F05 /* MovieDetail */,
+				0096494D2C6E454F00B78F05 /* WatchList */,
+				0096494B2C6E454100B78F05 /* Search */,
+				0096494A2C6E453B00B78F05 /* Home */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -169,9 +215,20 @@
 		00D88E052C6E3E9500B3FAF0 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				00D88DFE2C6E3D2100B3FAF0 /* Info.plist */,
+				00D88E002C6E3D6900B3FAF0 /* Configuration.swift */,
 				00D88E062C6E3EAD00B3FAF0 /* Secrets.xcconfig */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		00D88E0A2C6E41ED00B3FAF0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				00D88DD82C6E3C7000B3FAF0 /* Assets.xcassets */,
+				00D88E0B2C6E420200B3FAF0 /* Colors.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +335,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00D88E0C2C6E420200B3FAF0 /* Colors.xcassets in Resources */,
+				009649492C6E445500B78F05 /* LaunchScreen.storyboard in Resources */,
 				00D88DDC2C6E3C7000B3FAF0 /* Preview Assets.xcassets in Resources */,
 				00D88DD92C6E3C7000B3FAF0 /* Assets.xcassets in Resources */,
 			);
@@ -305,8 +364,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				00D88E012C6E3D6900B3FAF0 /* Configuration.swift in Sources */,
-				00D88DD72C6E3C6E00B3FAF0 /* ContentView.swift in Sources */,
+				00D88DD72C6E3C6E00B3FAF0 /* HomeView.swift in Sources */,
 				00D88DD52C6E3C6E00B3FAF0 /* MoviesAppApp.swift in Sources */,
+				0096494F2C6E46DD00B78F05 /* HomeViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,7 +455,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -452,7 +512,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -479,6 +539,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -511,6 +572,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
