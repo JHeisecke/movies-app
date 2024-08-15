@@ -18,7 +18,7 @@ final class HomeViewModel: ObservableObject {
     
     // MARK: - Actions
     
-    func categoryChange(_ selectedTab: CategoriesView.Tab) {
+    func categoryChange(_ selectedTab: MovieCategory) {
         switch selectedTab {
         case .nowPlaying:
             print("")
@@ -26,6 +26,8 @@ final class HomeViewModel: ObservableObject {
             print("")
         case .topRated:
             print("")
+        default:
+            return
         }
     }
 }

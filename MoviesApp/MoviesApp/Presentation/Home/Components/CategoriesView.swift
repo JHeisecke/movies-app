@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct CategoriesView: View {
-    @State var selectedTab: Tab = .nowPlaying
+    @State var selectedTab: MovieCategory = .nowPlaying
     @Namespace var namespace
     
-    var onTabChange: (Tab) -> Void
+    var onTabChange: (MovieCategory) -> Void
     
     var body: some View {
         HStack {
-            ForEach(Tab.allCases) { tab in
+            ForEach(MovieCategory.tabbable) { tab in
                 TabButton(tab: tab, selectedTab: $selectedTab, namespace: namespace)
                     .padding()
             }
@@ -23,8 +23,8 @@ struct CategoriesView: View {
     }
     
     private struct TabButton: View {
-        let tab: Tab
-        @Binding var selectedTab: Tab
+        let tab: MovieCategory
+        @Binding var selectedTab: MovieCategory
         var namespace: Namespace.ID
         
         var body: some View {
@@ -56,27 +56,6 @@ struct CategoriesView: View {
         
         private var isSelected: Bool {
             selectedTab == tab
-        }
-    }
-    
-    // MARK: - Types
-    
-    enum Tab: Int, Identifiable, CaseIterable {
-        internal var id: Int { rawValue }
-        
-        case nowPlaying = 0
-        case upcoming = 1
-        case topRated = 2
-        
-        var text: String {
-            switch self {
-            case .nowPlaying:
-                String(localized: "Now playing")
-            case .upcoming:
-                String(localized: "Upcoming")
-            case .topRated:
-                String(localized: "Top rated")
-            }
         }
     }
 }

@@ -22,7 +22,7 @@ enum Configuration {
         infoDictionary[Keys.tmdbApiKey] as! String
     }
     
-    static var clearSkyAPIKey: String {
+    static var tmdbAccessToken: String {
         infoDictionary[Keys.tmdbAccessToken] as! String
     }
 }
