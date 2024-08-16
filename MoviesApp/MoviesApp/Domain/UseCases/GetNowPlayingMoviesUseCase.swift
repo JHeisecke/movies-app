@@ -20,7 +20,7 @@ struct GetNowPlayingMoviesUseCase: GetNowPlayingMoviesUseCaseProtocol {
     }
 
     func get(page: String) async throws -> MoviesList {
-        return try await moviesRepository.getNowPlayingMovies(language: "en", page: page, size: .small)
+        return try await moviesRepository.getNowPlayingMovies(language: "en", page: page)
     }
 }
 

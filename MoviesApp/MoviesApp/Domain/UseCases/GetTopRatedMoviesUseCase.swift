@@ -20,6 +20,6 @@ struct GetTopRatedMoviesUseCase: GetTopRatedMoviesUseCaseProtocol {
     }
 
     func get(page: String) async throws -> MoviesList {
-        return try await moviesRepository.getTopRatedMovies(language: "en", page: page, size: .small)
+        return try await moviesRepository.getTopRatedMovies(language: "en", page: page)
     }
 }

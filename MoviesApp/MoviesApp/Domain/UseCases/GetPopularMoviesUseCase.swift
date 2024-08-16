@@ -20,6 +20,6 @@ struct GetPopularMoviesUseCase: GetPopularMoviesUseCaseProtocol {
     }
 
     func get(page: String) async throws -> PageableMoviesList {
-        return try await moviesRepository.getPopularMovies(language: "en", page: page, size: .medium)
+        return try await moviesRepository.getPopularMovies(language: "en", page: page)
     }
 }
