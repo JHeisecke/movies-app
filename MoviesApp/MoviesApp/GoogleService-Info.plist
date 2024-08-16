@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyC-THPhiyStsdzqk63O0TwSzPdgHTPBOdg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>199914655003</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.github.jheisecke.MoviesApp</string>
+	<key>PROJECT_ID</key>
+	<string>quepa-b1396</string>
+	<key>STORAGE_BUCKET</key>
+	<string>quepa-b1396.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:199914655003:ios:c0d3955c00a1287a9fd7be</string>
+</dict>
+</plist>
