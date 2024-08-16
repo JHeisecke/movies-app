@@ -15,6 +15,9 @@
 		006A51142C6FC5BC00EB53C8 /* SearchMoviesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A51132C6FC5BC00EB53C8 /* SearchMoviesUseCase.swift */; };
 		006A51172C6FC68B00EB53C8 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A51162C6FC68B00EB53C8 /* Debouncer.swift */; };
 		006A511D2C6FDAC100EB53C8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 006A511C2C6FDAC100EB53C8 /* Kingfisher */; };
+		006A51202C6FF5A100EB53C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 006A511F2C6FF5A100EB53C8 /* GoogleService-Info.plist */; };
+		006A51232C6FF60600EB53C8 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 006A51222C6FF60600EB53C8 /* FirebaseAppDistribution-Beta */; };
+		006A51252C6FF63D00EB53C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A51242C6FF63D00EB53C8 /* AppDelegate.swift */; };
 		009649492C6E445500B78F05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009649472C6E445500B78F05 /* LaunchScreen.storyboard */; };
 		0096494F2C6E46DD00B78F05 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096494E2C6E46DD00B78F05 /* HomeViewModel.swift */; };
 		009649512C6E491E00B78F05 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009649502C6E491D00B78F05 /* SearchBar.swift */; };
@@ -81,6 +84,8 @@
 		006A51112C6F83C900EB53C8 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		006A51132C6FC5BC00EB53C8 /* SearchMoviesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesUseCase.swift; sourceTree = "<group>"; };
 		006A51162C6FC68B00EB53C8 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		006A511F2C6FF5A100EB53C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		006A51242C6FF63D00EB53C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		009649472C6E445500B78F05 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0096494E2C6E46DD00B78F05 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		009649502C6E491D00B78F05 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -130,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				006A511D2C6FDAC100EB53C8 /* Kingfisher in Frameworks */,
+				006A51232C6FF60600EB53C8 /* FirebaseAppDistribution-Beta in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +361,8 @@
 		00D88DD32C6E3C6E00B3FAF0 /* MoviesApp */ = {
 			isa = PBXGroup;
 			children = (
+				006A511F2C6FF5A100EB53C8 /* GoogleService-Info.plist */,
+				006A51072C6F759300EB53C8 /* Secrets.xcconfig */,
 				00D88DFF2C6E3D5700B3FAF0 /* App */,
 				00D88E042C6E3E2700B3FAF0 /* Data */,
 				00D88E032C6E3E2100B3FAF0 /* Domain */,
@@ -397,6 +405,7 @@
 				009649892C6E923C00B78F05 /* Extensions */,
 				00D88E052C6E3E9500B3FAF0 /* Configuration */,
 				00D88DD42C6E3C6E00B3FAF0 /* MoviesAppApp.swift */,
+				006A51242C6FF63D00EB53C8 /* AppDelegate.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -439,7 +448,6 @@
 			isa = PBXGroup;
 			children = (
 				00D88E002C6E3D6900B3FAF0 /* Configuration.swift */,
-				006A51072C6F759300EB53C8 /* Secrets.xcconfig */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -471,6 +479,7 @@
 			name = MoviesApp;
 			packageProductDependencies = (
 				006A511C2C6FDAC100EB53C8 /* Kingfisher */,
+				006A51222C6FF60600EB53C8 /* FirebaseAppDistribution-Beta */,
 			);
 			productName = MoviesApp;
 			productReference = 00D88DD12C6E3C6E00B3FAF0 /* MoviesApp.app */;
@@ -546,6 +555,7 @@
 			mainGroup = 00D88DC82C6E3C6E00B3FAF0;
 			packageReferences = (
 				006A511B2C6FDAC100EB53C8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				006A51212C6FF60600EB53C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 00D88DD22C6E3C6E00B3FAF0 /* Products */;
 			projectDirPath = "";
@@ -570,6 +580,7 @@
 				006A51092C6F762400EB53C8 /* popular.json in Resources */,
 				00D88DD92C6E3C7000B3FAF0 /* Assets.xcassets in Resources */,
 				0096497F2C6E86B700B78F05 /* now-playing.json in Resources */,
+				006A51202C6FF5A100EB53C8 /* GoogleService-Info.plist in Resources */,
 				009649812C6E86B700B78F05 /* top-rated.json in Resources */,
 				009649802C6E86B700B78F05 /* upcoming.json in Resources */,
 			);
@@ -628,6 +639,7 @@
 				009649762C6E80A700B78F05 /* MoviesRepositoryProtocol.swift in Sources */,
 				009649602C6E769D00B78F05 /* APIClient.swift in Sources */,
 				0096498D2C6E97E800B78F05 /* DomainError.swift in Sources */,
+				006A51252C6FF63D00EB53C8 /* AppDelegate.swift in Sources */,
 				009649842C6E8B1C00B78F05 /* GetPopularMoviesUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -786,11 +798,12 @@
 		};
 		00D88DF62C6E3C7000B3FAF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 006A51072C6F759300EB53C8 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesApp/Preview Content\"";
 				DEVELOPMENT_TEAM = UK87X7N6A9;
 				ENABLE_PREVIEWS = YES;
@@ -818,11 +831,13 @@
 		};
 		00D88DF72C6E3C7000B3FAF0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 006A51072C6F759300EB53C8 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesApp/Preview Content\"";
 				DEVELOPMENT_TEAM = UK87X7N6A9;
 				ENABLE_PREVIEWS = YES;
@@ -842,6 +857,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.jheisecke.MoviesApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -974,6 +990,14 @@
 				minimumVersion = 7.12.0;
 			};
 		};
+		006A51212C6FF60600EB53C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -981,6 +1005,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 006A511B2C6FDAC100EB53C8 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		006A51222C6FF60600EB53C8 /* FirebaseAppDistribution-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 006A51212C6FF60600EB53C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAppDistribution-Beta";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
