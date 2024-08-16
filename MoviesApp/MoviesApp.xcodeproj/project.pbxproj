@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		006A51092C6F762400EB53C8 /* popular.json in Resources */ = {isa = PBXBuildFile; fileRef = 006A51082C6F762400EB53C8 /* popular.json */; };
 		009649492C6E445500B78F05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009649472C6E445500B78F05 /* LaunchScreen.storyboard */; };
 		0096494F2C6E46DD00B78F05 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096494E2C6E46DD00B78F05 /* HomeViewModel.swift */; };
 		009649512C6E491E00B78F05 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009649502C6E491D00B78F05 /* SearchBar.swift */; };
@@ -35,7 +36,7 @@
 		009649932C6E990600B78F05 /* GetNowPlayingMoviesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009649922C6E990600B78F05 /* GetNowPlayingMoviesUseCase.swift */; };
 		009649962C6E9BF800B78F05 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009649952C6E9BF800B78F05 /* MainViewModel.swift */; };
 		0096499A2C6EA00600B78F05 /* PosterSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009649992C6EA00600B78F05 /* PosterSize.swift */; };
-		0096499C2C6EA7F200B78F05 /* popular.json in Resources */ = {isa = PBXBuildFile; fileRef = 0096499B2C6EA7F200B78F05 /* popular.json */; };
+		009649A42C6EFF6200B78F05 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009649A32C6EFF6200B78F05 /* SearchView.swift */; };
 		00D88DD52C6E3C6E00B3FAF0 /* MoviesAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D88DD42C6E3C6E00B3FAF0 /* MoviesAppApp.swift */; };
 		00D88DD72C6E3C6E00B3FAF0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D88DD62C6E3C6E00B3FAF0 /* HomeView.swift */; };
 		00D88DD92C6E3C7000B3FAF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D88DD82C6E3C7000B3FAF0 /* Assets.xcassets */; };
@@ -65,6 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		006A51072C6F759300EB53C8 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		006A51082C6F762400EB53C8 /* popular.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = popular.json; sourceTree = "<group>"; };
 		009649472C6E445500B78F05 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0096494E2C6E46DD00B78F05 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		009649502C6E491D00B78F05 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -93,7 +96,7 @@
 		009649922C6E990600B78F05 /* GetNowPlayingMoviesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNowPlayingMoviesUseCase.swift; sourceTree = "<group>"; };
 		009649952C6E9BF800B78F05 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		009649992C6EA00600B78F05 /* PosterSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterSize.swift; sourceTree = "<group>"; };
-		0096499B2C6EA7F200B78F05 /* popular.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = popular.json; path = ../../../../MyPlayground.playground/Resources/popular.json; sourceTree = "<group>"; };
+		009649A32C6EFF6200B78F05 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		00D88DD12C6E3C6E00B3FAF0 /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D88DD42C6E3C6E00B3FAF0 /* MoviesAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAppApp.swift; sourceTree = "<group>"; };
 		00D88DD62C6E3C6E00B3FAF0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -105,7 +108,6 @@
 		00D88DEF2C6E3C7000B3FAF0 /* MoviesAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAppUITests.swift; sourceTree = "<group>"; };
 		00D88DF12C6E3C7000B3FAF0 /* MoviesAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		00D88E002C6E3D6900B3FAF0 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		00D88E062C6E3EAD00B3FAF0 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		00D88E0B2C6E420200B3FAF0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				009649502C6E491D00B78F05 /* SearchBar.swift */,
+				009649A32C6EFF6200B78F05 /* SearchView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -259,7 +262,7 @@
 			children = (
 				009649872C6E8DCC00B78F05 /* genres.json */,
 				0096497B2C6E86B700B78F05 /* now-playing.json */,
-				0096499B2C6EA7F200B78F05 /* popular.json */,
+				006A51082C6F762400EB53C8 /* popular.json */,
 				0096497D2C6E86B700B78F05 /* top-rated.json */,
 				0096497C2C6E86B700B78F05 /* upcoming.json */,
 			);
@@ -400,7 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				00D88E002C6E3D6900B3FAF0 /* Configuration.swift */,
-				00D88E062C6E3EAD00B3FAF0 /* Secrets.xcconfig */,
+				006A51072C6F759300EB53C8 /* Secrets.xcconfig */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -522,7 +525,7 @@
 				00D88E0C2C6E420200B3FAF0 /* Colors.xcassets in Resources */,
 				009649492C6E445500B78F05 /* LaunchScreen.storyboard in Resources */,
 				00D88DDC2C6E3C7000B3FAF0 /* Preview Assets.xcassets in Resources */,
-				0096499C2C6EA7F200B78F05 /* popular.json in Resources */,
+				006A51092C6F762400EB53C8 /* popular.json in Resources */,
 				00D88DD92C6E3C7000B3FAF0 /* Assets.xcassets in Resources */,
 				0096497F2C6E86B700B78F05 /* now-playing.json in Resources */,
 				009649812C6E86B700B78F05 /* top-rated.json in Resources */,
@@ -570,6 +573,7 @@
 				009649932C6E990600B78F05 /* GetNowPlayingMoviesUseCase.swift in Sources */,
 				009649632C6E76ED00B78F05 /* Endpoint.swift in Sources */,
 				009649512C6E491E00B78F05 /* SearchBar.swift in Sources */,
+				009649A42C6EFF6200B78F05 /* SearchView.swift in Sources */,
 				009649582C6E534600B78F05 /* MovieCellView.swift in Sources */,
 				00D88DD52C6E3C6E00B3FAF0 /* MoviesAppApp.swift in Sources */,
 				0096494F2C6E46DD00B78F05 /* HomeViewModel.swift in Sources */,
@@ -734,7 +738,6 @@
 		};
 		00D88DF62C6E3C7000B3FAF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 00D88E062C6E3EAD00B3FAF0 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -767,7 +770,6 @@
 		};
 		00D88DF72C6E3C7000B3FAF0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 00D88E062C6E3EAD00B3FAF0 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

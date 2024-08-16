@@ -69,6 +69,7 @@ struct HomeView: View {
                 .contentMargins(.leading, Constants.padding)
             case .error:
                 Text("An error occured :(")
+                    .frame(maxWidth: .infinity, maxHeight: 100, alignment: .center)
             }
         }
     }
