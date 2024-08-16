@@ -64,3 +64,5 @@ fastlane/test_output
 MoviesApp/MoviesApp/App/Configuration/Secrets.xcconfig
 
 .DS_Store
+
+MoviesApp/MoviesApp/GoogleService-Info.plist
