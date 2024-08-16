@@ -62,16 +62,16 @@ struct MovieResponse: Codable {
 // MARK: - As Entity
 
 extension MoviesResponse {
-    func asEntity(downloadImage: @escaping ((String?) async throws -> URL?)) async throws -> PageableMoviesList {
-        let movies: MoviesList = try await self.asEntity(downloadImage: downloadImage)
+    func asEntity() -> PageableMoviesList {
+        let movies: MoviesList = self.asEntity()
         let hasMorePages = totalPages != nil && page ?? 0 < totalPages ?? 0
         return PageableMoviesList(movies: movies, hasNextPage: hasMorePages)
     }
     
-    func asEntity(downloadImage: @escaping ((String?) async throws -> URL?)) async throws -> MoviesList {
+    func asEntity() -> MoviesList {
         var movies: MoviesList = []
         for response in results {
-            guard let movie = try await response.asEntity(downloadImage: downloadImage) else { break }
+            guard let movie = response.asEntity() else { break }
             movies.append(movie)
         }
         return movies
@@ -79,10 +79,10 @@ extension MoviesResponse {
 }
 
 extension MovieResponse {
-    func asEntity(downloadImage: @escaping ((String?) async throws -> URL?)) async throws -> MovieEntity? {
+    func asEntity() -> MovieEntity? {
         let releaseData = DateFormatter().stringToDate_yyyyMMdd(releaseDate)
         let voteAverage = voteAverage != nil ? String(floor(10 * self.voteAverage!) / 10) : nil
-        let poster = try await downloadImage(posterPath)
+        let poster = URL(string: "https://image.tmdb.org/t/p/original/\(posterPath ?? "")")
         return .init(id: id, title: title ?? String(localized: "Untitled Project"), description: overview, poster: poster, releaseDate: releaseData, voteAverage: voteAverage, genres: nil)
     }
 }

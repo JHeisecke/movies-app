@@ -14,6 +14,7 @@
 		006A51122C6F83C900EB53C8 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A51112C6F83C900EB53C8 /* SearchViewModel.swift */; };
 		006A51142C6FC5BC00EB53C8 /* SearchMoviesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A51132C6FC5BC00EB53C8 /* SearchMoviesUseCase.swift */; };
 		006A51172C6FC68B00EB53C8 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A51162C6FC68B00EB53C8 /* Debouncer.swift */; };
+		006A511D2C6FDAC100EB53C8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 006A511C2C6FDAC100EB53C8 /* Kingfisher */; };
 		009649492C6E445500B78F05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009649472C6E445500B78F05 /* LaunchScreen.storyboard */; };
 		0096494F2C6E46DD00B78F05 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096494E2C6E46DD00B78F05 /* HomeViewModel.swift */; };
 		009649512C6E491E00B78F05 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009649502C6E491D00B78F05 /* SearchBar.swift */; };
@@ -128,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				006A511D2C6FDAC100EB53C8 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +469,9 @@
 			dependencies = (
 			);
 			name = MoviesApp;
+			packageProductDependencies = (
+				006A511C2C6FDAC100EB53C8 /* Kingfisher */,
+			);
 			productName = MoviesApp;
 			productReference = 00D88DD12C6E3C6E00B3FAF0 /* MoviesApp.app */;
 			productType = "com.apple.product-type.application";
@@ -539,6 +544,9 @@
 				Base,
 			);
 			mainGroup = 00D88DC82C6E3C6E00B3FAF0;
+			packageReferences = (
+				006A511B2C6FDAC100EB53C8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 00D88DD22C6E3C6E00B3FAF0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -782,7 +790,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesApp/Preview Content\"";
 				DEVELOPMENT_TEAM = UK87X7N6A9;
 				ENABLE_PREVIEWS = YES;
@@ -814,7 +822,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"MoviesApp/Preview Content\"";
 				DEVELOPMENT_TEAM = UK87X7N6A9;
 				ENABLE_PREVIEWS = YES;
@@ -956,6 +964,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		006A511B2C6FDAC100EB53C8 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		006A511C2C6FDAC100EB53C8 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 006A511B2C6FDAC100EB53C8 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 00D88DC92C6E3C6E00B3FAF0 /* Project object */;
 }

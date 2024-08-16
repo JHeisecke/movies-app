@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct MovieCellView: View {
     
@@ -20,17 +21,16 @@ struct MovieCellView: View {
     }
     
     var body: some View {
-        AsyncImage(url: imageURL) { phase in
-            switch phase {
-            case .success(let image):
-                image
-                    .resizable()
-                    .frame(width: size.width, height: height)
-            default:
+        KFImage(imageURL)
+            .placeholder {
                 placeholder
             }
-        }
-        .clipShape(RoundedRectangle(cornerRadius: 14))
+            .retry(maxCount: 3, interval: .seconds(5))
+            .cancelOnDisappear(true)
+            .cacheOriginalImage()
+            .resizable()
+            .frame(width: size.width, height: height)
+            .clipShape(RoundedRectangle(cornerRadius: 14))
     }
     
     var placeholder: some View {
