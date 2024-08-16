@@ -62,16 +62,16 @@ struct MovieResponse: Codable {
 // MARK: - As Entity
 
 extension MoviesResponse {
-    func asEntity() -> PageableMoviesList {
-        let movies: MoviesList = self.asEntity()
+    func asEntity(downloadImage: @escaping ((String?, PosterSize) async throws -> URL?), posterSize: PosterSize) async throws -> PageableMoviesList {
+        let movies: MoviesList = try await self.asEntity(downloadImage: downloadImage, posterSize: posterSize)
         let hasMorePages = totalPages != nil && page ?? 0 < totalPages ?? 0
         return PageableMoviesList(movies: movies, hasNextPage: hasMorePages)
     }
     
-    func asEntity() -> MoviesList {
+    func asEntity(downloadImage: @escaping ((String?, PosterSize) async throws -> URL?), posterSize: PosterSize) async throws -> MoviesList {
         var movies: MoviesList = []
         for response in results {
-            guard let movie = response.asEntity() else { break }
+            guard let movie = try await response.asEntity(downloadImage: downloadImage, posterSize: posterSize) else { break }
             movies.append(movie)
         }
         return movies
@@ -79,8 +79,9 @@ extension MoviesResponse {
 }
 
 extension MovieResponse {
-    func asEntity() -> MovieEntity? {
+    func asEntity(downloadImage: @escaping ((String?, PosterSize) async throws -> URL?), posterSize: PosterSize) async throws -> MovieEntity? {
         let releaseData = DateFormatter().stringToDate_yyyyMMdd(releaseDate)
-        return .init(id: id, title: title ?? String(localized: "Untitled Project"), description: overview, posterPath: posterPath, releaseDate: releaseData, voteAverage: voteAverage, genres: nil)
+        let poster = try await downloadImage(posterPath, posterSize)
+        return .init(id: id, title: title ?? String(localized: "Untitled Project"), description: overview, poster: poster, releaseDate: releaseData, voteAverage: voteAverage, genres: nil)
     }
 }

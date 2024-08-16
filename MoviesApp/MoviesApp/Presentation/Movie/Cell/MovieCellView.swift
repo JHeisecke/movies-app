@@ -10,7 +10,7 @@ import SwiftUI
 struct MovieCellView: View {
     
     var name: String
-    var path: String?
+    var imageURL: URL?
     
     let size: PosterSize
     let ratio = 1.44
@@ -20,7 +20,7 @@ struct MovieCellView: View {
     }
     
     var body: some View {
-        AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/\(size.rawValue)/\(path ?? "")")) { phase in
+        AsyncImage(url: imageURL) { phase in
             switch phase {
             case .success(let image):
                 image
@@ -54,7 +54,7 @@ struct MovieCellView: View {
     ZStack {
         Color.skyCaptain
         VStack(spacing: 10) {
-            MovieCellView(name: "Black Panther", path: "/6yK9hmS641NMwRkR1wWAALWI34t.jpg", size: PosterSize.medium)
+            MovieCellView(name: "Black Panther", imageURL: URL(string: "https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/black-panther-web.jpg"), size: PosterSize.medium)
         }
     }
 }

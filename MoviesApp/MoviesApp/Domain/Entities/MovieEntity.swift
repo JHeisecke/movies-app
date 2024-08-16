@@ -18,7 +18,7 @@ struct MovieEntity {
     let id: Int
     let title: String
     let description: String?
-    let posterPath: String?
+    let poster: URL?
     let releaseDate: Date?
     let voteAverage: Double?
     let genres: GenreList?

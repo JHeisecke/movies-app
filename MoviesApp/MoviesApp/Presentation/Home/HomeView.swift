@@ -51,14 +51,14 @@ struct HomeView: View {
             case .loading:
                 HStack {
                     ForEach(0..<6, id: \.self) { _ in
-                        MovieCellView(name:"", path: nil, size: PosterSize.medium)
+                        MovieCellView(name:"", imageURL: nil, size: PosterSize.medium)
                     }
                 }
             case .data(let result):
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHStack(spacing: 20) {
                         ForEach(result.movies, id: \.id) { movie in
-                            MovieCellView(name: movie.title, path: movie.posterPath, size: PosterSize.medium)
+                            MovieCellView(name: movie.title, imageURL: movie.poster, size: PosterSize.medium)
                         }
                         Color.clear
                             .task {
@@ -79,7 +79,7 @@ struct HomeView: View {
             CategoriesView(onTabChange: viewModel.categoryChange)
             LazyVGrid(columns: columns, content: {
                 ForEach(viewModel.categorySelectedMovies, id: \.id) { movie in
-                    MovieCellView(name: movie.title, path: movie.posterPath, size: PosterSize.small)
+                    MovieCellView(name: movie.title, imageURL: movie.poster, size: PosterSize.small)
                 }
             })
             .padding(.horizontal, Constants.padding)

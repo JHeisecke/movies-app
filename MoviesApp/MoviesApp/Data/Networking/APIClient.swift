@@ -28,7 +28,6 @@ final class APIClient: NSObject, APIClientProtocol {
             let data = try Data(contentsOf: url)
             do {
                 let decodedData = try decoder.decode(T.self, from: data)
-                print("\(mockfile): \(data.prettyPrintedJSONString ?? "")")
                 return decodedData
             } catch {
                 print(String(describing: error))

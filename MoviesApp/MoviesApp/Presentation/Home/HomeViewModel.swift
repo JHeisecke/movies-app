@@ -107,6 +107,7 @@ final class HomeViewModel: ObservableObject {
         }
     }
     
+    
     // MARK: - Actions
     
     func getNextPage() async {
