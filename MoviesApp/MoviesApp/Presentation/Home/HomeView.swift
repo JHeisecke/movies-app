@@ -18,24 +18,27 @@ struct HomeView: View {
     ]
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(alignment: .leading, spacing: 25) {
-                Text("What do you want to watch?")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                    .padding(.horizontal, Constants.padding)
-                    .foregroundStyle(.white)
-                popularSection
-                categoriesSection
+        NavigationStack {
+            ScrollView(.vertical) {
+                VStack(alignment: .leading, spacing: 25) {
+                    Text("What do you want to watch?")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .padding(.horizontal, Constants.padding)
+                        .foregroundStyle(.white)
+                    popularSection
+                    categoriesSection
+                }
             }
-        }
-        .background(Color.skyCaptain)
-        .task {
-            await viewModel.onAppear()
-        }
-        .refreshable {
-            Task {
+            .scrollIndicators(.never)
+            .background(Color.skyCaptain)
+            .task {
                 await viewModel.onAppear()
+            }
+            .refreshable {
+                Task {
+                    await viewModel.onAppear()
+                }
             }
         }
     }
@@ -51,14 +54,14 @@ struct HomeView: View {
             case .loading:
                 HStack {
                     ForEach(0..<6, id: \.self) { _ in
-                        MovieCellView(name:"", path: nil, size: PosterSize.medium)
+                        MovieCellView(name:"", imageURL: nil, size: PosterSize.medium)
                     }
                 }
             case .data(let result):
-                ScrollView(.horizontal, showsIndicators: false) {
+                ScrollView(.horizontal) {
                     LazyHStack(spacing: 20) {
                         ForEach(result.movies, id: \.id) { movie in
-                            MovieCellView(name: movie.title, path: movie.posterPath, size: PosterSize.medium)
+                            MovieCellView(name: movie.title, imageURL: movie.poster, size: PosterSize.medium)
                         }
                         Color.clear
                             .task {
@@ -66,9 +69,11 @@ struct HomeView: View {
                             }
                     }
                 }
+                .scrollIndicators(.never)
                 .contentMargins(.leading, Constants.padding)
             case .error:
                 Text("An error occured :(")
+                    .frame(maxWidth: .infinity, maxHeight: 100, alignment: .center)
             }
         }
     }
@@ -78,7 +83,7 @@ struct HomeView: View {
             CategoriesView(onTabChange: viewModel.categoryChange)
             LazyVGrid(columns: columns, content: {
                 ForEach(viewModel.categorySelectedMovies, id: \.id) { movie in
-                    MovieCellView(name: movie.title, path: movie.posterPath, size: PosterSize.small)
+                    MovieCellView(name: movie.title, imageURL: movie.poster, size: PosterSize.small)
                 }
             })
             .padding(.horizontal, Constants.padding)

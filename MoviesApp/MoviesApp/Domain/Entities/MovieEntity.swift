@@ -18,8 +18,14 @@ struct MovieEntity {
     let id: Int
     let title: String
     let description: String?
-    let posterPath: String?
+    let poster: URL?
     let releaseDate: Date?
-    let voteAverage: Double?
+    let voteAverage: String?
     let genres: GenreList?
+    
+    var releaseYear: Int? {
+        guard let releaseDate else { return nil }
+        let calendar = Calendar.current
+        return calendar.component(.year, from: releaseDate)
+    }
 }

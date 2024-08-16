@@ -25,7 +25,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" name="AccentColor"/>
+                        <color key="backgroundColor" name="SkyCaptain"/>
                         <constraints>
                             <constraint firstItem="zVR-Bm-GFb" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="3LQ-Be-cRY"/>
                             <constraint firstItem="zVR-Bm-GFb" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="l0B-sS-nda"/>
@@ -38,8 +38,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="popcorn" width="128" height="128"/>
-        <namedColor name="AccentColor">
+        <image name="popcorn" width="378" height="378"/>
+        <namedColor name="SkyCaptain">
             <color red="0.14117647058823529" green="0.16470588235294117" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
