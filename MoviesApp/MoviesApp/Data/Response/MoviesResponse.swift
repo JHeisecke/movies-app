@@ -81,6 +81,7 @@ extension MoviesResponse {
 extension MovieResponse {
     func asEntity(downloadImage: @escaping ((String?, PosterSize) async throws -> URL?), posterSize: PosterSize) async throws -> MovieEntity? {
         let releaseData = DateFormatter().stringToDate_yyyyMMdd(releaseDate)
+        let voteAverage = voteAverage != nil ? String(floor(10 * self.voteAverage!) / 10) : nil
         let poster = try await downloadImage(posterPath, posterSize)
         return .init(id: id, title: title ?? String(localized: "Untitled Project"), description: overview, poster: poster, releaseDate: releaseData, voteAverage: voteAverage, genres: nil)
     }

@@ -24,7 +24,7 @@ struct MainView: View {
                         Image(systemName: "house")
                     }
                     .tag(Tab.home)
-                Text("Search")
+                SearchView(viewModel: viewModel.searchViewModel)
                     .tabItem {
                         Image(systemName: "magnifyingglass")
                     }
@@ -41,6 +41,7 @@ struct MainView: View {
         .onAppear(perform: {
             UITabBar.appearance().backgroundColor = UIColor.indianInk
             UITabBar.appearance().unselectedItemTintColor = UIColor.midnightGrey
+            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
             
         })
     }
