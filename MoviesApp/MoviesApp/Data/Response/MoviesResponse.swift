@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Foundation
 
 // MARK: - MoviesResponse
 
@@ -36,7 +35,7 @@ struct MovieResponse: Codable {
     let backdropPath: String?
     let genreIDS: [Int]?
     let id: Int
-    let originalLanguage: OriginalLanguage?
+    let originalLanguage: String?
     let originalTitle, overview: String?
     let popularity: Double?
     let posterPath, releaseDate, title: String?
@@ -58,13 +57,6 @@ struct MovieResponse: Codable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
-}
-
-enum OriginalLanguage: String, Codable {
-    case en = "en"
-    case es = "es"
-    case fr = "fr"
-    case zh = "zh"
 }
 
 // MARK: - As Entity
@@ -89,7 +81,6 @@ extension MoviesResponse {
 extension MovieResponse {
     func asEntity() -> MovieEntity? {
         let releaseData = DateFormatter().stringToDate_yyyyMMdd(releaseDate)
-        print(self)
         return .init(id: id, title: title ?? String(localized: "Untitled Project"), description: overview, posterPath: posterPath, releaseDate: releaseData, voteAverage: voteAverage, genres: nil)
     }
 }

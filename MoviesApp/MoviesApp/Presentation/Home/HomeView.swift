@@ -33,6 +33,11 @@ struct HomeView: View {
         .task {
             await viewModel.onAppear()
         }
+        .refreshable {
+            Task {
+                await viewModel.onAppear()
+            }
+        }
     }
     
     var popularSection: some View {
@@ -55,6 +60,10 @@ struct HomeView: View {
                         ForEach(result.movies, id: \.id) { movie in
                             MovieCellView(name: movie.title, path: movie.posterPath, size: PosterSize.medium)
                         }
+                        Color.clear
+                            .task {
+                                await viewModel.getNextPage()
+                            }
                     }
                 }
                 .contentMargins(.leading, Constants.padding)
@@ -68,8 +77,8 @@ struct HomeView: View {
         VStack {
             CategoriesView(onTabChange: viewModel.categoryChange)
             LazyVGrid(columns: columns, content: {
-                ForEach(0..<6, id: \.self) { _ in
-                    MovieCellView(name: "Black Panther", path: nil, size: PosterSize.small)
+                ForEach(viewModel.categorySelectedMovies, id: \.id) { movie in
+                    MovieCellView(name: movie.title, path: movie.posterPath, size: PosterSize.small)
                 }
             })
             .padding(.horizontal, Constants.padding)

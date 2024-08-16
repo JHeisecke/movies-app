@@ -10,7 +10,7 @@ import Foundation
 typealias MoviesList = [MovieEntity]
 
 struct PageableMoviesList {
-    let movies: MoviesList
+    var movies: MoviesList
     let hasNextPage: Bool
 }
 

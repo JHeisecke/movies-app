@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class HomeViewModel: ObservableObject {
     
     // MARK: - Types
@@ -16,13 +17,20 @@ final class HomeViewModel: ObservableObject {
         case error
     }
     
+    struct Constants {
+        static let moviesLimitConstant = 6
+    }
+    
     // MARK: - Properties
 
     var page: Int = 1
+    var hasNextPage = false
+    var currentlyFetching = false
     @Published var popularMovies: PopularMoviesState = .loading
-    @Published var topRatedMovies: MoviesList = []
-    @Published var upcomingMovies: MoviesList = []
-    @Published var nowPlayingMovies: MoviesList = []
+    @Published var categorySelectedMovies: MoviesList = []
+    var topRatedMovies: MoviesList = []
+    var upcomingMovies: MoviesList = []
+    var nowPlayingMovies: MoviesList = []
     
     private let getPopularUseCase: GetPopularMoviesUseCaseProtocol
     private let getUpcomingUseCase: GetUpcomingMoviesUseCaseProtocol
@@ -41,26 +49,81 @@ final class HomeViewModel: ObservableObject {
         self.getNowPlayingUseCase = getNowPlayingUseCase
     }
     
-    @MainActor
     func onAppear() async {
+        await getPopularMovies()
+        await getNowPlayingMovies()
+        await getTopRatedMovies()
+        await getUpcomingMovies()
+    }
+    
+    // MARK: - API
+    
+    func getPopularMovies() async {
+        guard !currentlyFetching else { return }
+        currentlyFetching = true
+        
+        defer {
+            currentlyFetching = false
+        }
+        
         do {
-            let movies = try await getPopularUseCase.get(page: "\(page)")
-            popularMovies = .data(movies: movies)
+            let response = try await getPopularUseCase.get(page: "\(page)")
+            if case .data(var currentMovies) = popularMovies {
+                currentMovies.movies.append(contentsOf: response.movies)
+                popularMovies = .data(movies: currentMovies)
+                return
+            }
+            popularMovies = .data(movies: response)
         } catch {
-            popularMovies = .error
+            currentlyFetching = false
+        }
+    }
+
+    func getNowPlayingMovies() async {
+        do {
+            let movies = try await getNowPlayingUseCase.get(page: "\(1)")
+            nowPlayingMovies = Array(movies.prefix(Constants.moviesLimitConstant))
+            categorySelectedMovies = nowPlayingMovies
+        } catch {
+            nowPlayingMovies = []
+        }
+    }
+
+    func getUpcomingMovies() async {
+        do {
+            let movies = try await getUpcomingUseCase.get(page: "\(1)")
+            upcomingMovies = Array(movies.prefix(Constants.moviesLimitConstant))
+        } catch {
+            upcomingMovies = []
+        }
+    }
+
+    func getTopRatedMovies() async {
+        do {
+            let movies = try await getTopRatedUseCase.get(page: "\(1)")
+            topRatedMovies = Array(movies.prefix(Constants.moviesLimitConstant))
+        } catch {
+            topRatedMovies = []
         }
     }
     
     // MARK: - Actions
     
+    func getNextPage() async {
+        guard case .data(let movies) = popularMovies, movies.hasNextPage else { return }
+        page += 1
+        await getPopularMovies()
+        
+    }
+    
     func categoryChange(_ selectedTab: MovieCategory) {
         switch selectedTab {
         case .nowPlaying:
-            print("")
+            categorySelectedMovies = nowPlayingMovies
         case .upcoming:
-            print("")
+            categorySelectedMovies = upcomingMovies
         case .topRated:
-            print("")
+            categorySelectedMovies = topRatedMovies
         default:
             return
         }

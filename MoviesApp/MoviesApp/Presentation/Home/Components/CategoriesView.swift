@@ -16,7 +16,7 @@ struct CategoriesView: View {
     var body: some View {
         HStack {
             ForEach(MovieCategory.tabbable) { tab in
-                TabButton(tab: tab, selectedTab: $selectedTab, namespace: namespace)
+                TabButton(tab: tab, selectedTab: $selectedTab, namespace: namespace, onTabChange: onTabChange)
                     .padding()
             }
         }
@@ -26,11 +26,14 @@ struct CategoriesView: View {
         let tab: MovieCategory
         @Binding var selectedTab: MovieCategory
         var namespace: Namespace.ID
+
+        var onTabChange: (MovieCategory) -> Void
         
         var body: some View {
             Button {
                 withAnimation {
                     selectedTab = tab
+                    onTabChange(selectedTab)
                 }
             } label: {
                 VStack {

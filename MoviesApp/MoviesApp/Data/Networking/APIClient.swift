@@ -26,12 +26,14 @@ final class APIClient: NSObject, APIClientProtocol {
         if let mockfile = endpoint.mockFile, let path = Bundle.main.path(forResource: mockfile, ofType: "json") {
             let url = URL(fileURLWithPath: path)
             let data = try Data(contentsOf: url)
-            let decodedData = try decoder.decode(T.self, from: data)
-            try? await Task.sleep(nanoseconds: 2 * 1_000_000_000)
-            
-            print("\(mockfile): \(data.prettyPrintedJSONString ?? "")")
-            
-            return decodedData
+            do {
+                let decodedData = try decoder.decode(T.self, from: data)
+                print("\(mockfile): \(data.prettyPrintedJSONString ?? "")")
+                return decodedData
+            } catch {
+                print(String(describing: error))
+                throw error
+            }
         }
 #endif
         
@@ -59,14 +61,13 @@ final class APIClient: NSObject, APIClientProtocol {
             
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let decodedData = try decoder.decode(T.self, from: data)
-            
-            print("\(response.url?.absoluteString ?? ""): \(data.prettyPrintedJSONString ?? "")")
-            
+                        
             return decodedData
         } catch {
             if (error as NSError).code == NSURLErrorTimedOut {
                 throw APIError.timeout
             }
+            print(String(describing: error))
             throw error
         }
     }
