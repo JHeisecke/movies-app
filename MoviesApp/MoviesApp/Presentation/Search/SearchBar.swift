@@ -11,9 +11,6 @@ struct SearchBar: View {
     @Binding var text: String
     @State var showCancelButton = false
     @FocusState private var isFocused: Bool
-    
-    let changeText: () -> Void
-    let cancel: () -> Void
 
     var body: some View {
         HStack(alignment: .center) {
@@ -22,13 +19,19 @@ struct SearchBar: View {
                     .foregroundColor(Color.midnightGrey)
                     .frame(height: 38)
                     .focused($isFocused)
-                    .onTapGesture {
-                        withAnimation {
-                            showCancelButton = true
+                    .onChange(of: isFocused) { oldValue, newValue in
+                        if newValue {
+                            withAnimation {
+                                showCancelButton = true
+                            }
+                        } else  if !newValue && text.isEmpty {
+                            withAnimation {
+                                showCancelButton = false
+                            }
                         }
                     }
                 Image(systemName: "magnifyingglass")
-                    .foregroundColor(Color.midnightGrey)
+                    .foregroundStyle(Color.midnightGrey)
             }
             .padding(.leading, 25)
             .padding(.trailing, 18)
@@ -36,10 +39,12 @@ struct SearchBar: View {
             .padding(.bottom, 8)
             .background(Color.indianInk)
             .clipShape(RoundedRectangle(cornerRadius: 22))
+            .onTapGesture {
+                isFocused = true
+            }
             if showCancelButton {
                 Button("Cancel", action: {
                     text = ""
-                    cancel()
                     isFocused = false
                     withAnimation {
                         showCancelButton = false
@@ -54,11 +59,7 @@ struct SearchBar: View {
 #Preview {
     ZStack {
         Color.skyCaptain
-        SearchBar(text: .constant(""), showCancelButton: false) {
-            
-        } cancel: {
-            
-        }
+        SearchBar(text: .constant(""), showCancelButton: false)
         .padding()
     }
 }

@@ -14,6 +14,6 @@ final class MainViewModel {
     }
     
     var searchViewModel: SearchViewModel {
-        .init()
+        .init(searchUseCase: SearchMoviesUseCase(moviesRepository: MoviesRepository()), debouncer: Debouncer(delay: 2))
     }
 }

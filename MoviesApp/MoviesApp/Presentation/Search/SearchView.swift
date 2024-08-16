@@ -19,29 +19,40 @@ struct SearchView: View {
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundStyle(.white)
-                SearchBar(text: $viewModel.searchText) {
-                    
-                } cancel: {
-                    
+                SearchBar(text: $viewModel.searchText)
+                switch viewModel.searchStatus {
+                case .loading:
+                    Color.clear
+                case .empty:
+                    emptyView
+                case .data(let movies):
+                    scrollView(movies)
                 }
-                ScrollView() {
-                    LazyVStack(alignment: .leading, spacing: 20) {
-                        ForEach(viewModel.searchedMovies, id: \.id) { movie in
-                            SearchMovieCell(movie: MovieEntity(id: 10, title: "Black Panther", description: "Description", poster: URL(string: "https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/black-panther-web.jpg"), releaseDate: Date(), voteAverage: "7.9", genres: nil)) {
-                                
-                            }
-                        }
-                    }
-                }
-                .scrollIndicators(.never)
             }
             .padding(.horizontal)
             .navigationBarTitleDisplayMode(.inline)
             .background(Color.skyCaptain)
         }
     }
+    
+    func scrollView(_ movies: MoviesList) -> some View {
+        ScrollView() {
+            LazyVStack(alignment: .leading, spacing: 20) {
+                ForEach(movies, id: \.id) { movie in
+                    SearchMovieCell(movie: movie) {
+                        // TODO: Go to detail
+                    }
+                }
+            }
+        }
+        .scrollIndicators(.never)
+    }
+    
+    var emptyView: some View {
+        ContentUnavailableView("We are sorry, no movie was found with that name", systemImage: "magnifyingglass", description: Text("Find movies by title"))
+    }
 }
 
 #Preview {
-    SearchView(viewModel: SearchViewModel())
+    SearchView(viewModel: SearchViewModel(searchUseCase: SearchMoviesUseCase(moviesRepository: MoviesRepository()), debouncer: Debouncer(delay: 2)))
 }

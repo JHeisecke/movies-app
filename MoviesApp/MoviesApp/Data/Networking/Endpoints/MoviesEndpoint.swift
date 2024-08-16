@@ -57,7 +57,7 @@ extension MoviesEndpoint: Endpoint {
         case .getUpcoming:
             "upcoming"
         case .searchMovie:
-            ""
+            "popular"
         }
     }
 }

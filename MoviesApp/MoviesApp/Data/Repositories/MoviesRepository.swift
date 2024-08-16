@@ -59,6 +59,18 @@ struct MoviesRepository: MoviesRepositoryProtocol {
         }
     }
     
+    func searchMovie(by query: String) async throws -> MoviesList {
+        do {
+            let response: MoviesResponse = try await apiClient.performRequest(
+                endpoint: MoviesEndpoint.searchMovie(query: query),
+                decoder: JSONDecoder()
+            )
+            return try await response.asEntity(downloadImage: downloadImage, posterSize: .small)
+        } catch {
+            throw DomainError.businessLogicFailed
+        }
+    }
+    
     private func downloadImage(_ posterPath: String?, _ size: PosterSize) async throws -> URL? {
         guard let url = URL(string: "https://image.tmdb.org/t/p/\(size.rawValue)/\(posterPath ?? "")") else { return nil }
         let (data, _) = try await session.data(from: url)
