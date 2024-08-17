@@ -77,6 +77,7 @@
 		00D88DF22C6E3C7000B3FAF0 /* MoviesAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D88DF12C6E3C7000B3FAF0 /* MoviesAppUITestsLaunchTests.swift */; };
 		00D88E012C6E3D6900B3FAF0 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D88E002C6E3D6900B3FAF0 /* Configuration.swift */; };
 		00D88E0C2C6E420200B3FAF0 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D88E0B2C6E420200B3FAF0 /* Colors.xcassets */; };
+		00F6252C2C70E96300559436 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F6252B2C70E96300559436 /* SearchViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +169,7 @@
 		00D88DF12C6E3C7000B3FAF0 /* MoviesAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		00D88E002C6E3D6900B3FAF0 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		00D88E0B2C6E420200B3FAF0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		00F6252B2C70E96300559436 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				006A51632C70741F00EB53C8 /* HomeViewModelTests.swift */,
+				00F6252B2C70E96300559436 /* SearchViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -780,6 +783,7 @@
 			files = (
 				006A51612C70730300EB53C8 /* MoviesRepositoryStub.swift in Sources */,
 				00D88DE62C6E3C7000B3FAF0 /* MoviesAppTests.swift in Sources */,
+				00F6252C2C70E96300559436 /* SearchViewModelTests.swift in Sources */,
 				006A51642C70741F00EB53C8 /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
