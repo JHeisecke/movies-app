@@ -18,4 +18,8 @@ final class MainViewModel {
     var searchViewModel: SearchViewModel {
         .init(searchUseCase: SearchMoviesUseCase(moviesRepository: movieRepository), getVideoUseCase: GetVideoUseCase(moviesRepository: movieRepository), debouncer: Debouncer(delay: 1))
     }
+    
+    var watchlistViewModel: WatchlistViewModel {
+        .init(getVideoUseCase: GetVideoUseCase(moviesRepository: movieRepository))
+    }
 }

@@ -29,7 +29,7 @@ struct MainView: View {
                         Image(systemName: "magnifyingglass")
                     }
                     .tag(Tab.search)
-                Text("Watch list")
+                WatchlistView(viewModel: viewModel.watchlistViewModel)
                     .tabItem {
                         Image(systemName: "bookmark")
                     }
