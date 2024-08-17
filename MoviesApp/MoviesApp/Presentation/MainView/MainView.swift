@@ -29,7 +29,7 @@ struct MainView: View {
                         Image(systemName: "magnifyingglass")
                     }
                     .tag(Tab.search)
-                Text("Watch list")
+                WatchlistView(viewModel: viewModel.watchlistViewModel)
                     .tabItem {
                         Image(systemName: "bookmark")
                     }
@@ -56,5 +56,5 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView(viewModel: MainViewModel())
+    MainView(viewModel: MainViewModel(movieRepository: MoviesRepository(), watchlistRepository: WatchlistRepository()))
 }

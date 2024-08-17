@@ -5,9 +5,8 @@
 //  Created by Javier Heisecke on 2024-08-16.
 //
 
-import Foundation
-import FirebaseCore
 import UIKit
+import FirebaseCore
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
