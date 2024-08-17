@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SaveMovieOnWatchlistUseCaseProtocol {
-    func execute(entity: MovieEntity) async throws -> Bool
+    func execute(entity: MovieEntity) async -> Bool
 }
 
 struct SaveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCaseProtocol {
@@ -19,7 +19,7 @@ struct SaveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCaseProtocol {
         self.watchlistRespository = watchlistRespository
     }
 
-    func execute(entity: MovieEntity) async throws -> Bool {
-        return try await watchlistRespository.store(movie: entity)
+    func execute(entity: MovieEntity) async -> Bool {
+        return await watchlistRespository.store(movie: entity)
     }
 }

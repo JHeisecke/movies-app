@@ -24,8 +24,12 @@ struct WatchlistRepository: WatchlistRepositoryProtocol {
         movieModel.genres = movie.genres as? NSObject
         
         return await context.perform {
-            coreDataStack.saveContext()
-            return true
+            do {
+                try coreDataStack.saveContext()
+                return true
+            } catch {
+                return false
+            }
         }
     }
     
@@ -46,6 +50,23 @@ struct WatchlistRepository: WatchlistRepositoryProtocol {
         return try await context.perform {
             let results = try fetchRequest.execute()
             return results.map { $0.asEntity() }
+        }
+    }
+
+    func delete(by id: Int) async throws -> Bool {
+        let context = coreDataStack.context
+        let fetchRequest: NSFetchRequest<MovieModel> = MovieModel.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+        
+        return try await context.perform {
+            let results = try fetchRequest.execute()
+            if let movieToDelete = results.first {
+                context.delete(movieToDelete)
+                try coreDataStack.saveContext()
+                return true
+            } else {
+                return false
+            }
         }
     }
 }

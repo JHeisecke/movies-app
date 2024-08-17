@@ -31,12 +31,12 @@ class CoreDataStack {
 
     lazy var context: NSManagedObjectContext = self.storeContainer.viewContext
 
-    func saveContext() {
+    func saveContext() throws {
         guard context.hasChanges else { return }
         do {
             try context.save()
         } catch let error as NSError {
-            print("Unresolved error \(error), \(error.userInfo)")
+            throw error
         }
     }
     

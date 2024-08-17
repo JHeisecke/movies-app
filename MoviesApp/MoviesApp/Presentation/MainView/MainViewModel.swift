@@ -9,17 +9,35 @@ import Foundation
 
 @MainActor
 final class MainViewModel {
-    let movieRepository = MoviesRepository()
+    let movieRepository: MoviesRepositoryProtocol
+    let watchlistRepository: WatchlistRepositoryProtocol
+    let getPopularMoviesUseCase: GetPopularMoviesUseCaseProtocol
+    let getUpcomingMoviesUseCase: GetUpcomingMoviesUseCaseProtocol
+    let getNowPlayingMoviesUseCase: GetNowPlayingMoviesUseCaseProtocol
+    let getTopRatedMoviesUseCase: GetTopRatedMoviesUseCaseProtocol
+    let getVideoUseCase: GetVideoUseCaseProtocol
+    let searchMoviesUseCase: SearchMoviesUseCaseProtocol
+    
+    init(movieRepository: MoviesRepositoryProtocol, watchlistRepository: WatchlistRepositoryProtocol) {
+        self.movieRepository = movieRepository
+        self.watchlistRepository = watchlistRepository
+        self.getPopularMoviesUseCase = GetPopularMoviesUseCase(moviesRepository: movieRepository)
+        self.getUpcomingMoviesUseCase = GetUpcomingMoviesUseCase(moviesRepository: movieRepository)
+        self.getNowPlayingMoviesUseCase = GetNowPlayingMoviesUseCase(moviesRepository: movieRepository)
+        self.getTopRatedMoviesUseCase = GetTopRatedMoviesUseCase(moviesRepository: movieRepository)
+        self.getVideoUseCase = GetVideoUseCase(moviesRepository: movieRepository)
+        self.searchMoviesUseCase = SearchMoviesUseCase(moviesRepository: movieRepository)
+    }
     
     var homeViewModel: HomeViewModel {
-        .init(getPopularUseCase: GetPopularMoviesUseCase(moviesRepository: movieRepository), getUpcomingUseCase: GetUpcomingMoviesUseCase(moviesRepository: movieRepository), getTopRatedUseCase: GetTopRatedMoviesUseCase(moviesRepository: movieRepository), getNowPlayingUseCase: GetNowPlayingMoviesUseCase(moviesRepository: movieRepository), getVideoUseCase: GetVideoUseCase(moviesRepository: movieRepository))
+        .init(getPopularUseCase: getPopularMoviesUseCase, getUpcomingUseCase: getUpcomingMoviesUseCase, getTopRatedUseCase: getTopRatedMoviesUseCase, getNowPlayingUseCase: getNowPlayingMoviesUseCase, getVideoUseCase: getVideoUseCase)
     }
     
     var searchViewModel: SearchViewModel {
-        .init(searchUseCase: SearchMoviesUseCase(moviesRepository: movieRepository), getVideoUseCase: GetVideoUseCase(moviesRepository: movieRepository), debouncer: Debouncer(delay: 1))
+        .init(searchUseCase: searchMoviesUseCase, getVideoUseCase: getVideoUseCase, debouncer: Debouncer(delay: 1))
     }
     
     var watchlistViewModel: WatchlistViewModel {
-        .init(getVideoUseCase: GetVideoUseCase(moviesRepository: movieRepository))
+        .init(getVideoUseCase: getVideoUseCase)
     }
 }

@@ -13,7 +13,7 @@ struct MoviesAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainView(viewModel: MainViewModel())
+            MainView(viewModel: MainViewModel(movieRepository: MoviesRepository(), watchlistRepository: WatchlistRepository()))
                 .preferredColorScheme(.dark)
         }
     }

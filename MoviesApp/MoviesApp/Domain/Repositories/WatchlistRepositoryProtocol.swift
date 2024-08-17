@@ -11,4 +11,5 @@ protocol WatchlistRepositoryProtocol {
     func store(movie: MovieEntity) async -> Bool
     func get(by id: Int) async throws -> MovieEntity?
     func getAll() async throws -> MoviesList
+    func delete(by id: Int) async throws -> Bool 
 }
