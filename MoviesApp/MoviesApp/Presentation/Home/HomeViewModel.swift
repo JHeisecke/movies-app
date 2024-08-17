@@ -36,20 +36,32 @@ final class HomeViewModel: ObservableObject {
     private let getUpcomingUseCase: GetUpcomingMoviesUseCaseProtocol
     private let getTopRatedUseCase: GetTopRatedMoviesUseCaseProtocol
     private let getNowPlayingUseCase: GetNowPlayingMoviesUseCaseProtocol
-
+    private let getVideoUseCase: GetVideoUseCaseProtocol
+    
+    func movieDetailViewModel(movie: MovieEntity) -> MovieDetailViewModel {
+        .init(movie: movie, getVideoUseCase: getVideoUseCase)
+    }
+    
     // MARK: - Initialization
     
     init(getPopularUseCase: GetPopularMoviesUseCaseProtocol,
          getUpcomingUseCase: GetUpcomingMoviesUseCaseProtocol,
          getTopRatedUseCase: GetTopRatedMoviesUseCaseProtocol,
-         getNowPlayingUseCase: GetNowPlayingMoviesUseCaseProtocol) {
+         getNowPlayingUseCase: GetNowPlayingMoviesUseCaseProtocol,
+         getVideoUseCase: GetVideoUseCaseProtocol) {
         self.getPopularUseCase = getPopularUseCase
         self.getUpcomingUseCase = getUpcomingUseCase
         self.getTopRatedUseCase = getTopRatedUseCase
         self.getNowPlayingUseCase = getNowPlayingUseCase
+        self.getVideoUseCase = getVideoUseCase
     }
     
     func onAppear() async {
+        await getAll()
+        categorySelectedMovies = nowPlayingMovies
+    }
+    
+    func getAll() async {
         await getPopularMovies()
         await getNowPlayingMovies()
         await getTopRatedMovies()
@@ -83,7 +95,6 @@ final class HomeViewModel: ObservableObject {
         do {
             let movies = try await getNowPlayingUseCase.get(page: "\(1)")
             nowPlayingMovies = Array(movies.prefix(Constants.moviesLimitConstant))
-            categorySelectedMovies = nowPlayingMovies
         } catch {
             nowPlayingMovies = []
         }

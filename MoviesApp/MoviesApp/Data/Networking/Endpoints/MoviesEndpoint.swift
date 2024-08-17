@@ -13,6 +13,7 @@ enum MoviesEndpoint {
     case getNowPlaying(language: String, page: String)
     case getUpcoming(language: String, page: String)
     case searchMovie(query: String)
+    case getVideos(id: Int)
 }
 
 extension MoviesEndpoint: Endpoint {
@@ -28,6 +29,8 @@ extension MoviesEndpoint: Endpoint {
             "/3/movie/now_playing"        
         case .searchMovie:
             "/3/search/movie"
+        case .getVideos(let id):
+            "/3/movie/\(id)/videos"
         }
     }
     
@@ -43,6 +46,8 @@ extension MoviesEndpoint: Endpoint {
             [URLQueryItem(name: "language", value: language), URLQueryItem(name: "page", value: page)]
         case .searchMovie(let query):
             [URLQueryItem(name: "query", value: query)]
+        default:
+            []
         }
     }
     
@@ -58,6 +63,8 @@ extension MoviesEndpoint: Endpoint {
             "upcoming"
         case .searchMovie:
             "popular"
+        case .getVideos:
+            "videos"
         }
     }
 }

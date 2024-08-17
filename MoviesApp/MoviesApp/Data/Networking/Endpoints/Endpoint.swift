@@ -34,7 +34,7 @@ extension Endpoint {
     var headers: [String: String] {
         let internalHeaders = [
             "accept": "application/json",
-            "Authorization": "Bearer \(Configuration.tmdbAccessToken)"
+            "Authorization": "Bearer \(Configuration.tmdbAccessToken ?? "")"
         ]
         return internalHeaders
     }
@@ -48,6 +48,7 @@ extension Endpoint {
         urlComponent.host = host
         if let queryParams = queryParams {
             urlComponent.queryItems = queryParams
+            urlComponent.queryItems?.append(contentsOf: [URLQueryItem(name: "api_key", value: Configuration.tmdbApiKey)])
         }
         
         guard let url = urlComponent.url else { return nil }

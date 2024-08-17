@@ -54,7 +54,7 @@ struct MovieCellView: View {
     ZStack {
         Color.skyCaptain
         VStack(spacing: 10) {
-            MovieCellView(name: "Black Panther", imageURL: URL(string: "https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/black-panther-web.jpg"), size: PosterSize.medium)
+            MovieCellView(name: "Black Panther", imageURL: URL(string: "https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/black-panther-web.jpg"), size: PosterSize.small)
         }
     }
 }

@@ -13,4 +13,5 @@ protocol MoviesRepositoryProtocol {
     func getUpcomingMovies(language: String, page: String) async throws -> MoviesList
     func getNowPlayingMovies(language: String, page: String) async throws -> MoviesList
     func searchMovie(by query: String) async throws -> MoviesList
+    func getVideo(ofMovie id: Int, type: VideoType, site: VideoSite) async throws -> MovieVideoEntity
 }

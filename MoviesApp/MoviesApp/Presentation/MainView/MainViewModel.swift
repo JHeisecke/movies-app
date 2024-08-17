@@ -9,11 +9,13 @@ import Foundation
 
 @MainActor
 final class MainViewModel {
+    let movieRepository = MoviesRepository()
+    
     var homeViewModel: HomeViewModel {
-        .init(getPopularUseCase: GetPopularMoviesUseCase(moviesRepository: MoviesRepository()), getUpcomingUseCase: GetUpcomingMoviesUseCase(moviesRepository: MoviesRepository()), getTopRatedUseCase: GetTopRatedMoviesUseCase(moviesRepository: MoviesRepository()), getNowPlayingUseCase: GetNowPlayingMoviesUseCase(moviesRepository: MoviesRepository()))
+        .init(getPopularUseCase: GetPopularMoviesUseCase(moviesRepository: movieRepository), getUpcomingUseCase: GetUpcomingMoviesUseCase(moviesRepository: movieRepository), getTopRatedUseCase: GetTopRatedMoviesUseCase(moviesRepository: movieRepository), getNowPlayingUseCase: GetNowPlayingMoviesUseCase(moviesRepository: movieRepository), getVideoUseCase: GetVideoUseCase(moviesRepository: movieRepository))
     }
     
     var searchViewModel: SearchViewModel {
-        .init(searchUseCase: SearchMoviesUseCase(moviesRepository: MoviesRepository()), debouncer: Debouncer(delay: 1))
+        .init(searchUseCase: SearchMoviesUseCase(moviesRepository: movieRepository), getVideoUseCase: GetVideoUseCase(moviesRepository: movieRepository), debouncer: Debouncer(delay: 1))
     }
 }

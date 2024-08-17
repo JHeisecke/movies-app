@@ -10,9 +10,7 @@ import SwiftUI
 struct SearchMovieCell: View {
     
     let movie: MovieEntity
-    
-    var onTapGesture: () -> Void
-    
+        
     var body: some View {
         HStack(alignment: .top) {
             MovieCellView(name: movie.title, imageURL: movie.poster, size: .small)
@@ -30,17 +28,12 @@ struct SearchMovieCell: View {
                 }
             }
         }
-        .onTapGesture {
-            onTapGesture()
-        }
     }
 }
 
 #Preview {
     ZStack {
         Color.skyCaptain
-        SearchMovieCell(movie: MovieEntity(id: 10, title: "Black Panther", description: "Description", poster: URL(string: "https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/black-panther-web.jpg"), releaseDate: Date(), voteAverage: "7.9", genres: nil)) {
-            
-        }
+        SearchMovieCell(movie: MovieEntity(id: 10, title: "Black Panther", description: "Description", poster: URL(string: "https://www.washingtonpost.com/graphics/2019/entertainment/oscar-nominees-movie-poster-design/img/black-panther-web.jpg"), releaseDate: Date(), voteAverage: "7.9", genres: nil))
     }
 }

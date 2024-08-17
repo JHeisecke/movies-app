@@ -82,7 +82,7 @@ extension MovieResponse {
     func asEntity() -> MovieEntity? {
         let releaseData = DateFormatter().stringToDate_yyyyMMdd(releaseDate)
         let voteAverage = voteAverage != nil ? String(floor(10 * self.voteAverage!) / 10) : nil
-        let poster = URL(string: "https://image.tmdb.org/t/p/original/\(posterPath ?? "")")
+        let poster = URL(string: "https://image.tmdb.org/t/p/w342/\(posterPath ?? "")")
         return .init(id: id, title: title ?? String(localized: "Untitled Project"), description: overview, poster: poster, releaseDate: releaseData, voteAverage: voteAverage, genres: nil)
     }
 }

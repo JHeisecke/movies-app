@@ -39,20 +39,30 @@ struct SearchView: View {
         ScrollView() {
             LazyVStack(alignment: .leading, spacing: 20) {
                 ForEach(movies, id: \.id) { movie in
-                    SearchMovieCell(movie: movie) {
-                        // TODO: Go to detail
-                    }
+                    movieDetailLink(movie)
                 }
             }
         }
         .scrollIndicators(.never)
     }
     
+    // MARK: - Empty State
+    
     var emptyView: some View {
         ContentUnavailableView("We are sorry, no movie was found with that name", systemImage: "magnifyingglass", description: Text("Find movies by title"))
+    }
+    
+    // MARK: - Navigation
+    
+    func movieDetailLink(_ movie: MovieEntity) -> some View {
+        NavigationLink {
+            MovieDetailView(viewModel: viewModel.movieDetailViewModel(movie: movie))
+        } label: {
+            SearchMovieCell(movie: movie)
+        }
     }
 }
 
 #Preview {
-    SearchView(viewModel: SearchViewModel(searchUseCase: SearchMoviesUseCase(moviesRepository: MoviesRepository()), debouncer: Debouncer(delay: 2)))
+    SearchView(viewModel: SearchViewModel(searchUseCase: SearchMoviesUseCase(moviesRepository: MoviesRepository()), getVideoUseCase: GetVideoUseCase(moviesRepository: MoviesRepository()), debouncer: Debouncer(delay: 2)))
 }
