@@ -11,7 +11,7 @@ import Foundation
 final class SearchViewModel: ObservableObject {
 
     // MARK: - Types
-    enum SearchStatus {
+    enum SearchStatus: Equatable {
         case loading
         case empty
         case data(movies: MoviesList)

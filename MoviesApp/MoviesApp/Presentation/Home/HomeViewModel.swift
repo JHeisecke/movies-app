@@ -11,7 +11,7 @@ import Foundation
 final class HomeViewModel: ObservableObject {
     
     // MARK: - Types
-    enum PopularMoviesState {
+    enum PopularMoviesState: Equatable {
         case loading
         case data(movies: PageableMoviesList)
         case error
