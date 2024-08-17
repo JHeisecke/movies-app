@@ -63,7 +63,7 @@ struct HomeView: View {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 20) {
                         ForEach(result.movies, id: \.id) { movie in
-                            movieDetailLink(movie)
+                            movieDetailLink(movie, size: .medium)
                         }
                         Color.clear
                             .task {
@@ -87,7 +87,7 @@ struct HomeView: View {
             CategoriesView(onTabChange: viewModel.categoryChange)
             LazyVGrid(columns: columns, content: {
                 ForEach(viewModel.categorySelectedMovies, id: \.id) { movie in
-                    movieDetailLink(movie)
+                    movieDetailLink(movie, size: .small)
                 }
             })
             .padding(.horizontal, Constants.padding)
@@ -97,11 +97,11 @@ struct HomeView: View {
     
     // MARK: - Navigation
     
-    func movieDetailLink(_ movie: MovieEntity) -> some View {
+    func movieDetailLink(_ movie: MovieEntity, size: PosterSize) -> some View {
         NavigationLink {
             MovieDetailView(viewModel: viewModel.movieDetailViewModel(movie: movie))
         } label: {
-            MovieCellView(name: movie.title, imageURL: movie.poster, size: PosterSize.medium)
+            MovieCellView(name: movie.title, imageURL: movie.poster, size: size)
         }
     }
     
