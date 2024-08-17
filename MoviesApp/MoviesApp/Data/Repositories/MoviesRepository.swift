@@ -14,7 +14,7 @@ struct MoviesRepository: MoviesRepositoryProtocol {
     
     func getPopularMovies(language: String, page: String) async throws -> PageableMoviesList {
         do {
-            let response: MoviesResponse = try await apiClient.performRequest(
+            let response: MoviesResponse = try await apiClient.fetchDataWithCacheCheck(
                 endpoint: MoviesEndpoint.getPopular(language: language, page: page),
                 decoder: decoder
             )
@@ -26,7 +26,7 @@ struct MoviesRepository: MoviesRepositoryProtocol {
     
     func getTopRatedMovies(language: String, page: String) async throws -> MoviesList {
         do {
-            let response: MoviesResponse = try await apiClient.performRequest(
+            let response: MoviesResponse = try await apiClient.fetchDataWithCacheCheck(
                 endpoint: MoviesEndpoint.getTopRated(language: language, page: page),
                 decoder: decoder
             )
@@ -38,7 +38,7 @@ struct MoviesRepository: MoviesRepositoryProtocol {
     
     func getUpcomingMovies(language: String, page: String) async throws -> MoviesList {
         do {
-            let response: MoviesResponse = try await apiClient.performRequest(
+            let response: MoviesResponse = try await apiClient.fetchDataWithCacheCheck(
                 endpoint: MoviesEndpoint.getUpcoming(language: language, page: page),
                 decoder: decoder
             )
@@ -50,7 +50,7 @@ struct MoviesRepository: MoviesRepositoryProtocol {
     
     func getNowPlayingMovies(language: String, page: String) async throws -> MoviesList {
         do {
-            let response: MoviesResponse = try await apiClient.performRequest(
+            let response: MoviesResponse = try await apiClient.fetchDataWithCacheCheck(
                 endpoint: MoviesEndpoint.getNowPlaying(language: language, page: page),
                 decoder: decoder
             )
@@ -62,7 +62,7 @@ struct MoviesRepository: MoviesRepositoryProtocol {
     
     func searchMovie(by query: String) async throws -> MoviesList {
         do {
-            let response: MoviesResponse = try await apiClient.performRequest(
+            let response: MoviesResponse = try await apiClient.fetchDataWithCacheCheck(
                 endpoint: MoviesEndpoint.searchMovie(query: query),
                 decoder: decoder
             )
@@ -74,7 +74,7 @@ struct MoviesRepository: MoviesRepositoryProtocol {
     
     func getVideo(ofMovie id: Int, type: VideoType, site: VideoSite) async throws -> MovieVideoEntity {
         do {
-            let response: MovieVideosResponse = try await apiClient.performRequest(
+            let response: MovieVideosResponse = try await apiClient.fetchDataWithCacheCheck(
                 endpoint: MoviesEndpoint.getVideos(id: id),
                 decoder: decoder
             )
