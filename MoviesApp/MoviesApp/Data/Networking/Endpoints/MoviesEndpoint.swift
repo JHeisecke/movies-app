@@ -30,7 +30,7 @@ extension MoviesEndpoint: Endpoint {
         case .searchMovie:
             "/3/search/movie"
         case .getVideos(let id):
-            "/3/movie/\(id)"
+            "/3/movie/\(id)/videos"
         }
     }
     
@@ -47,7 +47,7 @@ extension MoviesEndpoint: Endpoint {
         case .searchMovie(let query):
             [URLQueryItem(name: "query", value: query)]
         default:
-            nil
+            []
         }
     }
     

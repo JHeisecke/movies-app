@@ -9,6 +9,7 @@ import SwiftUI
 import YouTubePlayerKit
 
 struct MovieDetailView: View {
+    @Environment(\.dismiss) private var dismiss
     
     @ObservedObject var viewModel: MovieDetailViewModel
     @StateObject private var youTubePlayer: YouTubePlayer = ""
@@ -31,7 +32,7 @@ struct MovieDetailView: View {
                     .frame(height: Constants.trailerHeight)
                     .overlay(alignment: .bottomLeading) {
                         HStack(alignment: .center) {
-                            MovieCellView(name: viewModel.movie.title, size: .small)
+                            MovieCellView(name: viewModel.movie.title, imageURL: viewModel.movie.poster, size: .small)
                                 .padding(.leading, 30)
                             Text(viewModel.movie.title)
                                 .lineLimit(4)
@@ -62,18 +63,18 @@ struct MovieDetailView: View {
             .background(Color.skyCaptain)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Detail")
+            .navigationBarBackButtonHidden()
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .topBarLeading) {
                     Button {
-                        
+                        dismiss()
                     } label: {
                         Image(systemName: "chevron.left")
                             .foregroundStyle(.white)
                             .fontWeight(.semibold)
                     }
                 }
-                
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         
                     } label: {
