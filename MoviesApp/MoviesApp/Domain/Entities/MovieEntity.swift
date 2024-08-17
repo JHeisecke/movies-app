@@ -9,7 +9,7 @@ import Foundation
 
 typealias MoviesList = [MovieEntity]
 
-struct PageableMoviesList {
+struct PageableMoviesList: Equatable {
     var movies: MoviesList
     let hasNextPage: Bool
 }
@@ -27,5 +27,11 @@ struct MovieEntity {
         guard let releaseDate else { return nil }
         let calendar = Calendar.current
         return calendar.component(.year, from: releaseDate)
+    }
+}
+
+extension MovieEntity: Equatable {
+    static func == (lhs: MovieEntity, rhs: MovieEntity) -> Bool {
+        lhs.id == rhs.id
     }
 }

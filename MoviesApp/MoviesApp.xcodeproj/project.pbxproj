@@ -37,6 +37,8 @@
 		006A515A2C70467B00EB53C8 /* GetAllMoviesFromWatchlistUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A51592C70467B00EB53C8 /* GetAllMoviesFromWatchlistUseCase.swift */; };
 		006A515C2C704A0C00EB53C8 /* RemoveMovieFromWatchlistUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A515B2C704A0C00EB53C8 /* RemoveMovieFromWatchlistUseCase.swift */; };
 		006A515E2C70559000EB53C8 /* GetMovieFromWatchlistUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A515D2C70559000EB53C8 /* GetMovieFromWatchlistUseCase.swift */; };
+		006A51612C70730300EB53C8 /* MoviesRepositoryStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A51602C70730300EB53C8 /* MoviesRepositoryStub.swift */; };
+		006A51642C70741F00EB53C8 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A51632C70741F00EB53C8 /* HomeViewModelTests.swift */; };
 		009649492C6E445500B78F05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009649472C6E445500B78F05 /* LaunchScreen.storyboard */; };
 		0096494F2C6E46DD00B78F05 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0096494E2C6E46DD00B78F05 /* HomeViewModel.swift */; };
 		009649512C6E491E00B78F05 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009649502C6E491D00B78F05 /* SearchBar.swift */; };
@@ -123,6 +125,8 @@
 		006A51592C70467B00EB53C8 /* GetAllMoviesFromWatchlistUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllMoviesFromWatchlistUseCase.swift; sourceTree = "<group>"; };
 		006A515B2C704A0C00EB53C8 /* RemoveMovieFromWatchlistUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveMovieFromWatchlistUseCase.swift; sourceTree = "<group>"; };
 		006A515D2C70559000EB53C8 /* GetMovieFromWatchlistUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMovieFromWatchlistUseCase.swift; sourceTree = "<group>"; };
+		006A51602C70730300EB53C8 /* MoviesRepositoryStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepositoryStub.swift; sourceTree = "<group>"; };
+		006A51632C70741F00EB53C8 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		009649472C6E445500B78F05 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0096494E2C6E46DD00B78F05 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		009649502C6E491D00B78F05 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -244,6 +248,22 @@
 				006A51442C70368500EB53C8 /* CoreDataStack.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		006A515F2C7072F600EB53C8 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				006A51602C70730300EB53C8 /* MoviesRepositoryStub.swift */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
+		006A51622C70740D00EB53C8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				006A51632C70741F00EB53C8 /* HomeViewModelTests.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		009649482C6E445500B78F05 /* LaunchScreen */ = {
@@ -472,6 +492,8 @@
 		00D88DE42C6E3C7000B3FAF0 /* MoviesAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				006A51622C70740D00EB53C8 /* ViewModels */,
+				006A515F2C7072F600EB53C8 /* Stubs */,
 				00D88DE52C6E3C7000B3FAF0 /* MoviesAppTests.swift */,
 			);
 			path = MoviesAppTests;
@@ -756,7 +778,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				006A51612C70730300EB53C8 /* MoviesRepositoryStub.swift in Sources */,
 				00D88DE62C6E3C7000B3FAF0 /* MoviesAppTests.swift in Sources */,
+				006A51642C70741F00EB53C8 /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -981,7 +1005,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UK87X7N6A9;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.jheisecke.MoviesAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1001,7 +1025,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UK87X7N6A9;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.jheisecke.MoviesAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
