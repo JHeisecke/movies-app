@@ -35,17 +35,20 @@ final class SearchViewModel: ObservableObject {
     
     private let searchUseCase: SearchMoviesUseCaseProtocol
     private let getVideoUseCase: GetVideoUseCaseProtocol
+    private let saveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCaseProtocol
+    private let removeMovieFromWatchlistUseCase: RemoveMovieFromWatchlistUseCaseProtocol
     let debouncer: Debouncer
     
     func movieDetailViewModel(movie: MovieEntity) -> MovieDetailViewModel {
-        .init(movie: movie, getVideoUseCase: getVideoUseCase)
+        .init(movie: movie, getVideoUseCase: getVideoUseCase, removeMovieFromWatchlistUseCase: removeMovieFromWatchlistUseCase, saveMovieOnWatchlistUseCase: saveMovieOnWatchlistUseCase)
     }
-    
     // MARK: - Initialization
     
-    init(searchUseCase: SearchMoviesUseCaseProtocol, getVideoUseCase: GetVideoUseCaseProtocol, debouncer: Debouncer) {
+    init(searchUseCase: SearchMoviesUseCaseProtocol, getVideoUseCase: GetVideoUseCaseProtocol, debouncer: Debouncer, saveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCaseProtocol, removeMovieFromWatchlistUseCase: RemoveMovieFromWatchlistUseCaseProtocol) {
         self.searchUseCase = searchUseCase
         self.getVideoUseCase = getVideoUseCase
+        self.saveMovieOnWatchlistUseCase = saveMovieOnWatchlistUseCase
+        self.removeMovieFromWatchlistUseCase = removeMovieFromWatchlistUseCase
         self.debouncer = debouncer
     }
     

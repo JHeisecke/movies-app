@@ -66,6 +66,6 @@ struct WatchlistView: View {
 
 #Preview {
     NavigationStack {
-        WatchlistView(viewModel: WatchlistViewModel(getVideoUseCase: GetVideoUseCase(moviesRepository: MoviesRepository()), getWatchlistMoviesUseCase: GetAllMoviesFromWatchlistUseCase(watchlistRepository: WatchlistRepository())))
+        WatchlistView(viewModel: WatchlistViewModel(getVideoUseCase: GetVideoUseCase(moviesRepository: MoviesRepository()), getWatchlistMoviesUseCase: GetAllMoviesFromWatchlistUseCase(watchlistRepository: WatchlistRepository()), saveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCase(watchlistRepository: WatchlistRepository()), removeMovieFromWatchlistUseCase: RemoveMovieFromWatchlistUseCase(watchlistRepository: WatchlistRepository())))
     }
 }

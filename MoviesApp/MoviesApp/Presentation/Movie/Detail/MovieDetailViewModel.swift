@@ -15,12 +15,16 @@ final class MovieDetailViewModel: ObservableObject {
     private(set) var movie: MovieEntity
     @Published private(set) var video: MovieVideoEntity?
     private let getVideoUseCase: GetVideoUseCaseProtocol
+    private let saveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCaseProtocol
+    private let removeMovieFromWatchlistUseCase: RemoveMovieFromWatchlistUseCaseProtocol
     
     // MARK: - Initialization
     
-    init(movie: MovieEntity, getVideoUseCase: GetVideoUseCaseProtocol) {
+    init(movie: MovieEntity, getVideoUseCase: GetVideoUseCaseProtocol, removeMovieFromWatchlistUseCase: RemoveMovieFromWatchlistUseCaseProtocol, saveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCaseProtocol) {
         self.movie = movie
         self.getVideoUseCase = getVideoUseCase
+        self.saveMovieOnWatchlistUseCase = saveMovieOnWatchlistUseCase
+        self.removeMovieFromWatchlistUseCase = removeMovieFromWatchlistUseCase
     }
     
     func getVideo() async {
