@@ -31,15 +31,21 @@ final class SearchViewModel: ObservableObject {
             }
         }
     }
-    @Published var searchStatus: SearchStatus = .loading
+    @Published private(set) var searchStatus: SearchStatus = .loading
     
-    let searchUseCase: SearchMoviesUseCaseProtocol
+    private let searchUseCase: SearchMoviesUseCaseProtocol
+    private let getVideoUseCase: GetVideoUseCaseProtocol
     let debouncer: Debouncer
+    
+    func movieDetailViewModel(movie: MovieEntity) -> MovieDetailViewModel {
+        .init(movie: movie, getVideoUseCase: getVideoUseCase)
+    }
     
     // MARK: - Initialization
     
-    init(searchUseCase: SearchMoviesUseCaseProtocol, debouncer: Debouncer) {
+    init(searchUseCase: SearchMoviesUseCaseProtocol, getVideoUseCase: GetVideoUseCaseProtocol, debouncer: Debouncer) {
         self.searchUseCase = searchUseCase
+        self.getVideoUseCase = getVideoUseCase
         self.debouncer = debouncer
     }
     

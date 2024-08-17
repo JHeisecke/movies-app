@@ -9,13 +9,14 @@ import Foundation
 
 struct MoviesRepository: MoviesRepositoryProtocol {
     private var apiClient: APIClientProtocol = APIClient()
+    private var decoder = JSONDecoder()
     private let session = URLSession(configuration: .default)
     
     func getPopularMovies(language: String, page: String) async throws -> PageableMoviesList {
         do {
             let response: MoviesResponse = try await apiClient.performRequest(
                 endpoint: MoviesEndpoint.getPopular(language: language, page: page),
-                decoder: JSONDecoder()
+                decoder: decoder
             )
             return response.asEntity()
         } catch {
@@ -27,7 +28,7 @@ struct MoviesRepository: MoviesRepositoryProtocol {
         do {
             let response: MoviesResponse = try await apiClient.performRequest(
                 endpoint: MoviesEndpoint.getTopRated(language: language, page: page),
-                decoder: JSONDecoder()
+                decoder: decoder
             )
             return response.asEntity()
         } catch {
@@ -39,7 +40,7 @@ struct MoviesRepository: MoviesRepositoryProtocol {
         do {
             let response: MoviesResponse = try await apiClient.performRequest(
                 endpoint: MoviesEndpoint.getUpcoming(language: language, page: page),
-                decoder: JSONDecoder()
+                decoder: decoder
             )
             return response.asEntity()
         } catch {
@@ -51,7 +52,7 @@ struct MoviesRepository: MoviesRepositoryProtocol {
         do {
             let response: MoviesResponse = try await apiClient.performRequest(
                 endpoint: MoviesEndpoint.getNowPlaying(language: language, page: page),
-                decoder: JSONDecoder()
+                decoder: decoder
             )
             return response.asEntity()
         } catch {
@@ -63,9 +64,22 @@ struct MoviesRepository: MoviesRepositoryProtocol {
         do {
             let response: MoviesResponse = try await apiClient.performRequest(
                 endpoint: MoviesEndpoint.searchMovie(query: query),
-                decoder: JSONDecoder()
+                decoder: decoder
             )
             return response.asEntity()
+        } catch {
+            throw DomainError.businessLogicFailed
+        }
+    }
+    
+    func getVideo(ofMovie id: Int, type: VideoType, site: VideoSite) async throws -> MovieVideoEntity {
+        do {
+            let response: MovieVideosResponse = try await apiClient.performRequest(
+                endpoint: MoviesEndpoint.getVideos(id: id),
+                decoder: decoder
+            )
+            guard let entity = response.asEntity(type: type, site: site) else { throw DomainError.businessLogicFailed }
+            return entity
         } catch {
             throw DomainError.businessLogicFailed
         }

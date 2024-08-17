@@ -37,11 +37,13 @@ struct HomeView: View {
             }
             .refreshable {
                 Task {
-                    await viewModel.onAppear()
+                    await viewModel.getAll()
                 }
             }
         }
     }
+    
+    // MARK: - Popular
     
     var popularSection: some View {
         VStack(alignment: .leading) {
@@ -61,7 +63,7 @@ struct HomeView: View {
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 20) {
                         ForEach(result.movies, id: \.id) { movie in
-                            MovieCellView(name: movie.title, imageURL: movie.poster, size: PosterSize.medium)
+                            movieDetailLink(movie)
                         }
                         Color.clear
                             .task {
@@ -78,17 +80,29 @@ struct HomeView: View {
         }
     }
     
+    // MARK: - Categories
+    
     var categoriesSection: some View {
         VStack {
             CategoriesView(onTabChange: viewModel.categoryChange)
             LazyVGrid(columns: columns, content: {
                 ForEach(viewModel.categorySelectedMovies, id: \.id) { movie in
-                    MovieCellView(name: movie.title, imageURL: movie.poster, size: PosterSize.small)
+                    movieDetailLink(movie)
                 }
             })
             .padding(.horizontal, Constants.padding)
         }
         .padding(.vertical, Constants.padding)
+    }
+    
+    // MARK: - Navigation
+    
+    func movieDetailLink(_ movie: MovieEntity) -> some View {
+        NavigationLink {
+            MovieDetailView(viewModel: viewModel.movieDetailViewModel(movie: movie))
+        } label: {
+            MovieCellView(name: movie.title, imageURL: movie.poster, size: PosterSize.medium)
+        }
     }
     
     // MARK: - Constants
@@ -99,5 +113,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(viewModel: .init(getPopularUseCase: GetPopularMoviesUseCase(moviesRepository: MoviesRepository()), getUpcomingUseCase: GetUpcomingMoviesUseCase(moviesRepository: MoviesRepository()), getTopRatedUseCase: GetTopRatedMoviesUseCase(moviesRepository: MoviesRepository()), getNowPlayingUseCase: GetNowPlayingMoviesUseCase(moviesRepository: MoviesRepository())))
+    HomeView(viewModel: .init(getPopularUseCase: GetPopularMoviesUseCase(moviesRepository: MoviesRepository()), getUpcomingUseCase: GetUpcomingMoviesUseCase(moviesRepository: MoviesRepository()), getTopRatedUseCase: GetTopRatedMoviesUseCase(moviesRepository: MoviesRepository()), getNowPlayingUseCase: GetNowPlayingMoviesUseCase(moviesRepository: MoviesRepository()), getVideoUseCase: GetVideoUseCase(moviesRepository: MoviesRepository())))
 }

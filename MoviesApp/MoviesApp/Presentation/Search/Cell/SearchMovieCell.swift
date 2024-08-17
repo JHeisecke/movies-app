@@ -10,9 +10,7 @@ import SwiftUI
 struct SearchMovieCell: View {
     
     let movie: MovieEntity
-    
-    var onTapGesture: () -> Void
-    
+        
     var body: some View {
         HStack(alignment: .top) {
             MovieCellView(name: movie.title, imageURL: movie.poster, size: .small)
@@ -29,9 +27,6 @@ struct SearchMovieCell: View {
                     ReleaseYearView(releaseYear: releaseYear)
                 }
             }
-        }
-        .onTapGesture {
-            onTapGesture()
         }
     }
 }
