@@ -28,7 +28,7 @@ struct WatchlistView: View {
                     ForEach(movies, id: \.id) { movie in
                         movieDetailLink(movie)
                             .listRowSeparator(.hidden, edges: .all)
-                            .listStyle(.plain)
+                            .listRowBackground(Color.clear)
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                 Button {
                                     Task {
@@ -37,8 +37,11 @@ struct WatchlistView: View {
                                 } label: {
                                     Image(systemName: "trash.fill")
                                 }
+                                .tint(.red)
                             }
                     }
+                    .listStyle(.plain)
+                    .background(.skyCaptain)
                 }
             case .error:
                 errorView
