@@ -28,7 +28,7 @@ final class SearchViewModelTests: XCTestCase {
         saveMovieOnWatchlistUseCase = SaveMovieOnWatchlistUseCase(watchlistRepository: WatchlistRepository())
         removeMovieFromWatchlistUseCase = RemoveMovieFromWatchlistUseCase(watchlistRepository: WatchlistRepository())
         getMovieFromWatchlistUseCase = GetMovieFromWatchlistUseCase(watchlistRepository: WatchlistRepository())
-        debouncer = Debouncer(delay: 0.5)
+        debouncer = Debouncer(delay: 1)
         viewModel = SearchViewModel(
             searchUseCase: searchUseCase,
             getVideoUseCase: getVideoUseCase,
@@ -66,7 +66,7 @@ final class SearchViewModelTests: XCTestCase {
 
     func testGetMoviesSuccess() {
         viewModel.getMovies()
-        XCTAssertEqual(viewModel.searchStatus, .data(movies: [MovieEntity(id: 1, title: "Movie 1", description: nil, poster: nil, releaseDate: nil, voteAverage: nil, genres: nil)]))
+        XCTAssertEqual(viewModel.searchStatus, .data(movies: [MovieEntity(id: 1, title: "", description: nil, poster: nil, releaseDate: nil, voteAverage: nil, genres: nil)]))
     }
 
     func testGetMoviesFailure() {

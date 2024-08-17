@@ -59,87 +59,67 @@ final class HomeViewModelTests: XCTestCase {
     }
 
     func testGetPopularMoviesSuccess() async {
-        Task {
-            moviesRepository.hasError = false
-            await viewModel.getPopularMovies()
-            XCTAssertEqual(viewModel.popularMovies, .data(movies: PageableMoviesList(movies: [MovieEntity(id: 1, title: "", description: nil, poster: nil, releaseDate: nil, voteAverage: nil, genres: nil)], hasNextPage: false)))
-            XCTAssertFalse(viewModel.currentlyFetching)
-        }
+        moviesRepository.hasError = false
+        await viewModel.getPopularMovies()
+        XCTAssertEqual(viewModel.popularMovies, .data(movies: PageableMoviesList(movies: [MovieEntity(id: 1, title: "", description: nil, poster: nil, releaseDate: nil, voteAverage: nil, genres: nil)], hasNextPage: false)))
+        XCTAssertFalse(viewModel.currentlyFetching)
     }
 
     func testGetPopularMoviesError() async {
-        Task {
-            moviesRepository.hasError = true
-            await viewModel.getPopularMovies()
-            XCTAssertEqual(viewModel.popularMovies, .error)
-            XCTAssertFalse(viewModel.currentlyFetching)
-        }
+        moviesRepository.hasError = true
+        await viewModel.getPopularMovies()
+        XCTAssertEqual(viewModel.popularMovies, .error)
+        XCTAssertFalse(viewModel.currentlyFetching)
     }
 
     func testGetUpcomingMoviesSuccess() async {
-        Task {
-            moviesRepository.hasError = false
-            await viewModel.getUpcomingMovies()
-            XCTAssertEqual(viewModel.upcomingMovies.count, 1)
-            XCTAssertEqual(viewModel.upcomingMovies.first?.id, 1)
-        }
+        moviesRepository.hasError = false
+        await viewModel.getUpcomingMovies()
+        XCTAssertEqual(viewModel.upcomingMovies.count, 1)
+        XCTAssertEqual(viewModel.upcomingMovies.first?.id, 1)
     }
 
     func testGetUpcomingMoviesError() async {
-        Task {
-            moviesRepository.hasError = true
-            await viewModel.getUpcomingMovies()
-            XCTAssertTrue(viewModel.upcomingMovies.isEmpty)
-        }
+        moviesRepository.hasError = true
+        await viewModel.getUpcomingMovies()
+        XCTAssertTrue(viewModel.upcomingMovies.isEmpty)
     }
 
     func testGetTopRatedMoviesSuccess() async {
-        Task {
-            moviesRepository.hasError = false
-            await viewModel.getTopRatedMovies()
-            XCTAssertEqual(viewModel.topRatedMovies.count, 1)
-            XCTAssertEqual(viewModel.topRatedMovies.first?.id, 1)
-        }
+        moviesRepository.hasError = false
+        await viewModel.getTopRatedMovies()
+        XCTAssertEqual(viewModel.topRatedMovies.count, 1)
+        XCTAssertEqual(viewModel.topRatedMovies.first?.id, 1)
     }
 
     func testGetTopRatedMoviesError() async {
-        Task {
-            moviesRepository.hasError = true
-            await viewModel.getTopRatedMovies()
-            XCTAssertTrue(viewModel.topRatedMovies.isEmpty)
-        }
+        moviesRepository.hasError = true
+        await viewModel.getTopRatedMovies()
+        XCTAssertTrue(viewModel.topRatedMovies.isEmpty)
     }
 
     func testGetNowPlayingMoviesSuccess() async {
-        Task {
-            moviesRepository.hasError = false
-            await viewModel.getNowPlayingMovies()
-            XCTAssertEqual(viewModel.nowPlayingMovies.count, 1)
-            XCTAssertEqual(viewModel.nowPlayingMovies.first?.id, 1)
-        }
+        moviesRepository.hasError = false
+        await viewModel.getNowPlayingMovies()
+        XCTAssertEqual(viewModel.nowPlayingMovies.count, 1)
+        XCTAssertEqual(viewModel.nowPlayingMovies.first?.id, 1)
     }
 
     func testGetNowPlayingMoviesError() async {
-        Task {
-            moviesRepository.hasError = true
-            await viewModel.getNowPlayingMovies()
-            XCTAssertTrue(viewModel.nowPlayingMovies.isEmpty)
-        }
+        moviesRepository.hasError = true
+        await viewModel.getNowPlayingMovies()
+        XCTAssertTrue(viewModel.nowPlayingMovies.isEmpty)
     }
 
     func testGetNextPage() async {
-        Task {
-            await viewModel.getPopularMovies()
-            await viewModel.getNextPage()
-            XCTAssertEqual(viewModel.page, 2)
-        }
+        await viewModel.getPopularMovies()
+        await viewModel.getNextPage()
+        XCTAssertEqual(viewModel.page, 2)
     }
 
     func testCategoryChange() async {
-        Task {
-            await viewModel.getNowPlayingMovies()
-            viewModel.categoryChange(.nowPlaying)
-            XCTAssertEqual(viewModel.categorySelectedMovies, viewModel.nowPlayingMovies)
-        }
+        await viewModel.getNowPlayingMovies()
+        viewModel.categoryChange(.nowPlaying)
+        XCTAssertEqual(viewModel.categorySelectedMovies, viewModel.nowPlayingMovies)
     }
 }
