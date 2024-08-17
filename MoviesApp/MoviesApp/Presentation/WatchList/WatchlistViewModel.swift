@@ -27,18 +27,20 @@ final class WatchlistViewModel: ObservableObject {
     private let getWatchlistMoviesUseCase: GetAllMoviesFromWatchlistUseCaseProtocol
     private let saveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCaseProtocol
     private let removeMovieFromWatchlistUseCase: RemoveMovieFromWatchlistUseCaseProtocol
+    private let getMovieFromWatchlistUseCase: GetMovieFromWatchlistUseCaseProtocol
     
     func movieDetailViewModel(movie: MovieEntity) -> MovieDetailViewModel {
-        .init(movie: movie, getVideoUseCase: getVideoUseCase, removeMovieFromWatchlistUseCase: removeMovieFromWatchlistUseCase, saveMovieOnWatchlistUseCase: saveMovieOnWatchlistUseCase)
+        .init(movie: movie, getVideoUseCase: getVideoUseCase, removeMovieFromWatchlistUseCase: removeMovieFromWatchlistUseCase, saveMovieOnWatchlistUseCase: saveMovieOnWatchlistUseCase, getMovieFromWatchlistUseCase: getMovieFromWatchlistUseCase)
     }
     
     // MARK: - Initialization
     
-    init(getVideoUseCase: GetVideoUseCaseProtocol, getWatchlistMoviesUseCase: GetAllMoviesFromWatchlistUseCaseProtocol, saveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCaseProtocol, removeMovieFromWatchlistUseCase: RemoveMovieFromWatchlistUseCaseProtocol) {
+    init(getVideoUseCase: GetVideoUseCaseProtocol, getWatchlistMoviesUseCase: GetAllMoviesFromWatchlistUseCaseProtocol, saveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCaseProtocol, removeMovieFromWatchlistUseCase: RemoveMovieFromWatchlistUseCaseProtocol, getMovieFromWatchlistUseCase: GetMovieFromWatchlistUseCaseProtocol) {
         self.getVideoUseCase = getVideoUseCase
         self.getWatchlistMoviesUseCase = getWatchlistMoviesUseCase
         self.saveMovieOnWatchlistUseCase = saveMovieOnWatchlistUseCase
         self.removeMovieFromWatchlistUseCase = removeMovieFromWatchlistUseCase
+        self.getMovieFromWatchlistUseCase = getMovieFromWatchlistUseCase
     }
     
     func getAllWatchlistMovies() async {

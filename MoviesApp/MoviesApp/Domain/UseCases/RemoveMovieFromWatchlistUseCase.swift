@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RemoveMovieFromWatchlistUseCaseProtocol {
-    func delete(id: Int) async throws -> Bool
+    func delete(id: Int) async -> Bool
 }
 
 struct RemoveMovieFromWatchlistUseCase: RemoveMovieFromWatchlistUseCaseProtocol {
@@ -19,7 +19,11 @@ struct RemoveMovieFromWatchlistUseCase: RemoveMovieFromWatchlistUseCaseProtocol 
         self.watchlistRepository = watchlistRepository
     }
 
-    func delete(id: Int) async throws -> Bool {
-        return try await watchlistRepository.delete(by: id)
+    func delete(id: Int) async -> Bool {
+        do {
+            return try await watchlistRepository.delete(by: id)
+        } catch {
+            return false
+        }
     }
 }

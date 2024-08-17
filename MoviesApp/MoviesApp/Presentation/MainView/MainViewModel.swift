@@ -20,6 +20,7 @@ final class MainViewModel {
     private let getWatchlistMoviesUseCase: GetAllMoviesFromWatchlistUseCaseProtocol
     private let saveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCaseProtocol
     private let removeMovieFromWatchlistUseCase: RemoveMovieFromWatchlistUseCaseProtocol
+    private let getMovieFromWatchlistUseCase: GetMovieFromWatchlistUseCaseProtocol
     
     init(movieRepository: MoviesRepositoryProtocol, watchlistRepository: WatchlistRepositoryProtocol) {
         self.movieRepository = movieRepository
@@ -33,17 +34,18 @@ final class MainViewModel {
         self.getWatchlistMoviesUseCase = GetAllMoviesFromWatchlistUseCase(watchlistRepository: watchlistRepository)
         self.saveMovieOnWatchlistUseCase = SaveMovieOnWatchlistUseCase(watchlistRepository: watchlistRepository)
         self.removeMovieFromWatchlistUseCase = RemoveMovieFromWatchlistUseCase(watchlistRepository: watchlistRepository)
+        self.getMovieFromWatchlistUseCase = GetMovieFromWatchlistUseCase(watchlistRepository: watchlistRepository)
     }
     
     var homeViewModel: HomeViewModel {
-        .init(getPopularUseCase: getPopularMoviesUseCase, getUpcomingUseCase: getUpcomingMoviesUseCase, getTopRatedUseCase: getTopRatedMoviesUseCase, getNowPlayingUseCase: getNowPlayingMoviesUseCase, getVideoUseCase: getVideoUseCase, removeMovieFromWatchlistUseCase: removeMovieFromWatchlistUseCase, saveMovieOnWatchlistUseCase: saveMovieOnWatchlistUseCase)
+        .init(getPopularUseCase: getPopularMoviesUseCase, getUpcomingUseCase: getUpcomingMoviesUseCase, getTopRatedUseCase: getTopRatedMoviesUseCase, getNowPlayingUseCase: getNowPlayingMoviesUseCase, getVideoUseCase: getVideoUseCase, removeMovieFromWatchlistUseCase: removeMovieFromWatchlistUseCase, saveMovieOnWatchlistUseCase: saveMovieOnWatchlistUseCase, getMovieFromWatchlistUseCase: getMovieFromWatchlistUseCase)
     }
     
     var searchViewModel: SearchViewModel {
-        .init(searchUseCase: searchMoviesUseCase, getVideoUseCase: getVideoUseCase, debouncer: Debouncer(delay: 1), saveMovieOnWatchlistUseCase: saveMovieOnWatchlistUseCase, removeMovieFromWatchlistUseCase: removeMovieFromWatchlistUseCase)
+        .init(searchUseCase: searchMoviesUseCase, getVideoUseCase: getVideoUseCase, debouncer: Debouncer(delay: 1), saveMovieOnWatchlistUseCase: saveMovieOnWatchlistUseCase, removeMovieFromWatchlistUseCase: removeMovieFromWatchlistUseCase, getMovieFromWatchlistUseCase: getMovieFromWatchlistUseCase)
     }
     
     var watchlistViewModel: WatchlistViewModel {
-        .init(getVideoUseCase: getVideoUseCase, getWatchlistMoviesUseCase: getWatchlistMoviesUseCase, saveMovieOnWatchlistUseCase: saveMovieOnWatchlistUseCase, removeMovieFromWatchlistUseCase: removeMovieFromWatchlistUseCase)
+        .init(getVideoUseCase: getVideoUseCase, getWatchlistMoviesUseCase: getWatchlistMoviesUseCase, saveMovieOnWatchlistUseCase: saveMovieOnWatchlistUseCase, removeMovieFromWatchlistUseCase: removeMovieFromWatchlistUseCase, getMovieFromWatchlistUseCase: getMovieFromWatchlistUseCase)
     }
 }

@@ -39,9 +39,10 @@ final class HomeViewModel: ObservableObject {
     private let getVideoUseCase: GetVideoUseCaseProtocol
     private let saveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCaseProtocol
     private let removeMovieFromWatchlistUseCase: RemoveMovieFromWatchlistUseCaseProtocol
+    private let getMovieFromWatchlistUseCase: GetMovieFromWatchlistUseCaseProtocol
     
     func movieDetailViewModel(movie: MovieEntity) -> MovieDetailViewModel {
-        .init(movie: movie, getVideoUseCase: getVideoUseCase, removeMovieFromWatchlistUseCase: removeMovieFromWatchlistUseCase, saveMovieOnWatchlistUseCase: saveMovieOnWatchlistUseCase)
+        .init(movie: movie, getVideoUseCase: getVideoUseCase, removeMovieFromWatchlistUseCase: removeMovieFromWatchlistUseCase, saveMovieOnWatchlistUseCase: saveMovieOnWatchlistUseCase, getMovieFromWatchlistUseCase: getMovieFromWatchlistUseCase)
     }
     
     // MARK: - Initialization
@@ -52,13 +53,15 @@ final class HomeViewModel: ObservableObject {
          getNowPlayingUseCase: GetNowPlayingMoviesUseCaseProtocol,
          getVideoUseCase: GetVideoUseCaseProtocol,
          removeMovieFromWatchlistUseCase: RemoveMovieFromWatchlistUseCaseProtocol,
-         saveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCaseProtocol) {
+         saveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCaseProtocol,
+         getMovieFromWatchlistUseCase: GetMovieFromWatchlistUseCaseProtocol) {
         self.getPopularUseCase = getPopularUseCase
         self.getUpcomingUseCase = getUpcomingUseCase
         self.getTopRatedUseCase = getTopRatedUseCase
         self.getNowPlayingUseCase = getNowPlayingUseCase
         self.removeMovieFromWatchlistUseCase = removeMovieFromWatchlistUseCase
         self.saveMovieOnWatchlistUseCase = saveMovieOnWatchlistUseCase
+        self.getMovieFromWatchlistUseCase = getMovieFromWatchlistUseCase
         self.getVideoUseCase = getVideoUseCase
     }
     

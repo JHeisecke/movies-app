@@ -64,5 +64,5 @@ struct SearchView: View {
 }
 
 #Preview {
-    SearchView(viewModel: SearchViewModel(searchUseCase: SearchMoviesUseCase(moviesRepository: MoviesRepository()), getVideoUseCase: GetVideoUseCase(moviesRepository: MoviesRepository()), debouncer: Debouncer(delay: 2), saveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCase(watchlistRepository: WatchlistRepository()), removeMovieFromWatchlistUseCase: RemoveMovieFromWatchlistUseCase(watchlistRepository: WatchlistRepository())))
+    SearchView(viewModel: SearchViewModel(searchUseCase: SearchMoviesUseCase(moviesRepository: MoviesRepository()), getVideoUseCase: GetVideoUseCase(moviesRepository: MoviesRepository()), debouncer: Debouncer(delay: 2), saveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCase(watchlistRepository: WatchlistRepository()), removeMovieFromWatchlistUseCase: RemoveMovieFromWatchlistUseCase(watchlistRepository: WatchlistRepository()), getMovieFromWatchlistUseCase: GetMovieFromWatchlistUseCase(watchlistRepository: WatchlistRepository())))
 }
