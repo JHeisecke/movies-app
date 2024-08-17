@@ -18,7 +18,9 @@ struct MovieDetailView: View {
         NavigationStack {
             ZStack {
                 detail
-                loading
+                if viewModel.bookmarkState != .none {
+                    loading
+                }
             }
             .background(Color.skyCaptain)
             .navigationBarTitleDisplayMode(.inline)
@@ -63,42 +65,35 @@ struct MovieDetailView: View {
     }
     
     var loading: some View {
-        Group {
+        ZStack {
             switch viewModel.bookmarkState {
             case .loading:
-                rectangle
-                    .overlay(alignment: .center) {
-                        VStack {
-                            ProgressView()
-                            Text("Loading")
-                        }
-                    }
-            case .error(let saved):
-                rectangle
-                    .overlay(alignment: .center) {
-                        VStack {
-                            Image(systemName: "xmark")
-                            Text("Error")
-                        }
-                    }
-            case .done(let saved):
-                rectangle
-                    .overlay(alignment: .center) {
-                        VStack {
-                            Image(systemName: "checkmark")
-                            Text("Error")
-                        }
-                    }
+                VStack {
+                    ProgressView()
+                    Text("Loading")
+                }
+            case .error:
+                VStack {
+                    Image(systemName: "xmark")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                    Text("Error")
+                }
+            case .done:
+                VStack {
+                    Image(systemName: "checkmark")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                    Text("Success")
+                }
             case .none:
                 Color.clear
             }
         }
-    }
-    
-    var rectangle: some View {
-        RoundedRectangle(cornerRadius: 25.0)
-            .frame(width: 100, height: 200)
-            .foregroundStyle(.black.opacity(0.6))
+        .foregroundStyle(.white)
+        .padding()
+        .background(.black.opacity(0.4))
+        .clipShape(RoundedRectangle(cornerRadius: 15))
     }
     
     var detail: some View {

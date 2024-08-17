@@ -21,7 +21,6 @@ struct WatchlistRepository: WatchlistRepositoryProtocol {
         movieModel.poster = movie.poster?.absoluteString
         movieModel.releaseDate = movie.releaseDate
         movieModel.voteAverage = movie.voteAverage
-        movieModel.genres = movie.genres as? NSObject
         
         return await context.perform {
             do {

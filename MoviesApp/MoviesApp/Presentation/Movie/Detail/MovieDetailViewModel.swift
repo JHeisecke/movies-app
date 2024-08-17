@@ -14,8 +14,8 @@ final class MovieDetailViewModel: ObservableObject {
     
     enum BookmarkState {
         case loading
-        case error(saved: Bool)
-        case done(saved: Bool)
+        case error
+        case done
         case none
     }
     
@@ -60,14 +60,14 @@ final class MovieDetailViewModel: ObservableObject {
     }
     
     func saveOnWatchlist() async {
-        if case .loading = bookmarkState { return }
+        guard bookmarkState == .none else { return }
         bookmarkState = .loading
         let result = await saveMovieOnWatchlistUseCase.execute(entity: movie)
         if result {
-            bookmarkState = .done(saved: true)
+            bookmarkState = .done
             isBookmarked = true
         } else {
-            bookmarkState = .error(saved: true)
+            bookmarkState = .error
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             self?.bookmarkState = .none
@@ -75,14 +75,14 @@ final class MovieDetailViewModel: ObservableObject {
     }
     
     func removeFromWatchlist() async {
-        if case .loading = bookmarkState { return }
+        guard bookmarkState == .none else { return }
         bookmarkState = .loading
         let result = await removeMovieFromWatchlistUseCase.delete(id: movie.id)
         if result {
-            bookmarkState = .done(saved: false)
+            bookmarkState = .done
             isBookmarked = false
         } else {
-            bookmarkState = .error(saved: false)
+            bookmarkState = .error
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             self?.bookmarkState = .none

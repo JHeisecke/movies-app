@@ -22,7 +22,6 @@ extension MovieModel {
     @NSManaged public var poster: String?
     @NSManaged public var releaseDate: Date?
     @NSManaged public var voteAverage: String?
-    @NSManaged public var genres: NSObject?
 
 }
 

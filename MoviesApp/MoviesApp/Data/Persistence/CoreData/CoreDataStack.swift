@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 enum CoreDataModel: String {
-    case watchlist = "MovieModel"
+    case watchlist = "MovieData"
 }
 
 class CoreDataStack {

@@ -43,6 +43,19 @@ final class WatchlistViewModel: ObservableObject {
         self.getMovieFromWatchlistUseCase = getMovieFromWatchlistUseCase
     }
     
+    func removeFromWatchlist(_ movie: MovieEntity) async {
+        let result = await removeMovieFromWatchlistUseCase.delete(id: movie.id)
+        if result {
+            guard case .data(var watchlistMovies) = movies else { return }
+            watchlistMovies.removeAll(where: { $0.id == movie.id })
+            if watchlistMovies.isEmpty {
+                movies = .empty
+            } else {
+                movies = .data(movies: watchlistMovies)
+            }
+        }
+    }
+    
     func getAllWatchlistMovies() async {
         guard let result = await getWatchlistMoviesUseCase.get() else {
             movies = .error

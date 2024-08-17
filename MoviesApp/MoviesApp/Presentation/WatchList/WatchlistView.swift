@@ -28,9 +28,18 @@ struct WatchlistView: View {
                     ForEach(movies, id: \.id) { movie in
                         movieDetailLink(movie)
                             .listRowSeparator(.hidden, edges: .all)
+                            .listStyle(.plain)
+                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                Button {
+                                    Task {
+                                        await viewModel.removeFromWatchlist(movie)
+                                    }
+                                } label: {
+                                    Image(systemName: "trash.fill")
+                                }
+                            }
                     }
                 }
-                .listStyle(.plain)
             case .error:
                 errorView
             }

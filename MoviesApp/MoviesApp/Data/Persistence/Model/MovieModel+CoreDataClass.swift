@@ -23,7 +23,7 @@ extension MovieModel {
             poster: URL(string: self.poster ?? ""),
             releaseDate: self.releaseDate,
             voteAverage: self.voteAverage,
-            genres: self.genres as? GenreList
+            genres: nil
         )
     }
 }
