@@ -13,13 +13,13 @@ protocol SaveMovieOnWatchlistUseCaseProtocol {
 
 struct SaveMovieOnWatchlistUseCase: SaveMovieOnWatchlistUseCaseProtocol {
     
-    private let watchlistRespository: WatchlistRepositoryProtocol
+    private let watchlistRepository: WatchlistRepositoryProtocol
 
-    init(watchlistRespository: WatchlistRepositoryProtocol) {
-        self.watchlistRespository = watchlistRespository
+    init(watchlistRepository: WatchlistRepositoryProtocol) {
+        self.watchlistRepository = watchlistRepository
     }
 
     func execute(entity: MovieEntity) async -> Bool {
-        return await watchlistRespository.store(movie: entity)
+        return await watchlistRepository.store(movie: entity)
     }
 }

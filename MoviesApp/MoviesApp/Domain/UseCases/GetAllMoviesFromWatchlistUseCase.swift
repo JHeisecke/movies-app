@@ -8,18 +8,22 @@
 import Foundation
 
 protocol GetAllMoviesFromWatchlistUseCaseProtocol {
-    func get() async throws -> MoviesList
+    func get() async -> MoviesList?
 }
 
 struct GetAllMoviesFromWatchlistUseCase: GetAllMoviesFromWatchlistUseCaseProtocol {
     
-    private let watchlistRespository: WatchlistRepositoryProtocol
+    private let watchlistRepository: WatchlistRepositoryProtocol
 
-    init(watchlistRespository: WatchlistRepositoryProtocol) {
-        self.watchlistRespository = watchlistRespository
+    init(watchlistRepository: WatchlistRepositoryProtocol) {
+        self.watchlistRepository = watchlistRepository
     }
 
-    func get() async throws -> MoviesList {
-        return try await watchlistRespository.getAll()
+    func get() async -> MoviesList? {
+        do {
+            return try await watchlistRepository.getAll()
+        } catch {
+            return nil
+        }
     }
 }

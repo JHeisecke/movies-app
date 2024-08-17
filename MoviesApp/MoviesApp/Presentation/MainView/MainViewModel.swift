@@ -17,6 +17,7 @@ final class MainViewModel {
     let getTopRatedMoviesUseCase: GetTopRatedMoviesUseCaseProtocol
     let getVideoUseCase: GetVideoUseCaseProtocol
     let searchMoviesUseCase: SearchMoviesUseCaseProtocol
+    let getWatchlistMoviesUseCase: GetAllMoviesFromWatchlistUseCaseProtocol
     
     init(movieRepository: MoviesRepositoryProtocol, watchlistRepository: WatchlistRepositoryProtocol) {
         self.movieRepository = movieRepository
@@ -27,6 +28,7 @@ final class MainViewModel {
         self.getTopRatedMoviesUseCase = GetTopRatedMoviesUseCase(moviesRepository: movieRepository)
         self.getVideoUseCase = GetVideoUseCase(moviesRepository: movieRepository)
         self.searchMoviesUseCase = SearchMoviesUseCase(moviesRepository: movieRepository)
+        self.getWatchlistMoviesUseCase = GetAllMoviesFromWatchlistUseCase(watchlistRepository: watchlistRepository)
     }
     
     var homeViewModel: HomeViewModel {
@@ -38,6 +40,6 @@ final class MainViewModel {
     }
     
     var watchlistViewModel: WatchlistViewModel {
-        .init(getVideoUseCase: getVideoUseCase)
+        .init(getVideoUseCase: getVideoUseCase, getWatchlistMoviesUseCase: getWatchlistMoviesUseCase)
     }
 }

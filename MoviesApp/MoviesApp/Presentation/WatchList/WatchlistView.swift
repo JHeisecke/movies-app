@@ -31,9 +31,15 @@ struct WatchlistView: View {
                     }
                 }
                 .listStyle(.plain)
+            case .error:
+                ContentUnavailableView("An error occured!", systemImage: "figure.fall", description: Text("Come back later!"))
+                    .foregroundStyle(.white)
             }
         }
         .background(.skyCaptain)
+        .task {
+            await viewModel.getAllWatchlistMovies()
+        }
     }
     
     // MARK: - Empty State
@@ -56,6 +62,6 @@ struct WatchlistView: View {
 
 #Preview {
     NavigationStack {
-        WatchlistView(viewModel: WatchlistViewModel(getVideoUseCase: GetVideoUseCase(moviesRepository: MoviesRepository())))
+        WatchlistView(viewModel: WatchlistViewModel(getVideoUseCase: GetVideoUseCase(moviesRepository: MoviesRepository()), getWatchlistMoviesUseCase: GetAllMoviesFromWatchlistUseCase(watchlistRepository: WatchlistRepository())))
     }
 }
