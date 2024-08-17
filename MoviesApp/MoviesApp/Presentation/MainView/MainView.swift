@@ -56,5 +56,5 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView(viewModel: MainViewModel())
+    MainView(viewModel: MainViewModel(movieRepository: MoviesRepository(), watchlistRepository: WatchlistRepository()))
 }

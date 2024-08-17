@@ -32,8 +32,7 @@ struct WatchlistView: View {
                 }
                 .listStyle(.plain)
             case .error:
-                ContentUnavailableView("An error occured!", systemImage: "figure.fall", description: Text("Come back later!"))
-                    .foregroundStyle(.white)
+                errorView
             }
         }
         .background(.skyCaptain)
@@ -42,10 +41,15 @@ struct WatchlistView: View {
         }
     }
     
-    // MARK: - Empty State
+    // MARK: - States
+    
+    var errorView: some View {
+        ContentUnavailableView("An error occured!", systemImage: "figure.fall", description: Text("Come back later!"))
+            .foregroundStyle(.white)
+    }
     
     var emptyView: some View {
-        ContentUnavailableView("You haven't saved any movie Yet", systemImage: "film.stack", description: Text("Try searching movies and saving them!"))
+        ContentUnavailableView("You haven't saved any movie yet", systemImage: "film.stack", description: Text("Try searching movies and saving them!"))
             .foregroundStyle(.white)
     }
     
