@@ -15,9 +15,7 @@
 		006A51142C6FC5BC00EB53C8 /* SearchMoviesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A51132C6FC5BC00EB53C8 /* SearchMoviesUseCase.swift */; };
 		006A51172C6FC68B00EB53C8 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A51162C6FC68B00EB53C8 /* Debouncer.swift */; };
 		006A511D2C6FDAC100EB53C8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 006A511C2C6FDAC100EB53C8 /* Kingfisher */; };
-		006A51232C6FF60600EB53C8 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 006A51222C6FF60600EB53C8 /* FirebaseAppDistribution-Beta */; };
 		006A51252C6FF63D00EB53C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A51242C6FF63D00EB53C8 /* AppDelegate.swift */; };
-		006A51272C6FFCB600EB53C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 006A51262C6FFCB600EB53C8 /* GoogleService-Info.plist */; };
 		006A512A2C6FFF2200EB53C8 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A51292C6FFF2200EB53C8 /* MovieDetailView.swift */; };
 		006A512C2C70024500EB53C8 /* videos.json in Resources */ = {isa = PBXBuildFile; fileRef = 006A512B2C70024500EB53C8 /* videos.json */; };
 		006A512E2C70065900EB53C8 /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A512D2C70065900EB53C8 /* MovieDetailViewModel.swift */; };
@@ -107,7 +105,6 @@
 		006A51132C6FC5BC00EB53C8 /* SearchMoviesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesUseCase.swift; sourceTree = "<group>"; };
 		006A51162C6FC68B00EB53C8 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		006A51242C6FF63D00EB53C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		006A51262C6FFCB600EB53C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		006A51292C6FFF2200EB53C8 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		006A512B2C70024500EB53C8 /* videos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = videos.json; sourceTree = "<group>"; };
 		006A512D2C70065900EB53C8 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
@@ -178,7 +175,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				006A511D2C6FDAC100EB53C8 /* Kingfisher in Frameworks */,
-				006A51232C6FF60600EB53C8 /* FirebaseAppDistribution-Beta in Frameworks */,
 				006A51372C70101200EB53C8 /* YouTubePlayerKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,7 +467,6 @@
 		00D88DD32C6E3C6E00B3FAF0 /* MoviesApp */ = {
 			isa = PBXGroup;
 			children = (
-				006A51262C6FFCB600EB53C8 /* GoogleService-Info.plist */,
 				006A51072C6F759300EB53C8 /* Secrets.xcconfig */,
 				00D88DFF2C6E3D5700B3FAF0 /* App */,
 				00D88E042C6E3E2700B3FAF0 /* Data */,
@@ -592,7 +587,6 @@
 			name = MoviesApp;
 			packageProductDependencies = (
 				006A511C2C6FDAC100EB53C8 /* Kingfisher */,
-				006A51222C6FF60600EB53C8 /* FirebaseAppDistribution-Beta */,
 				006A51362C70101200EB53C8 /* YouTubePlayerKit */,
 			);
 			productName = MoviesApp;
@@ -669,7 +663,6 @@
 			mainGroup = 00D88DC82C6E3C6E00B3FAF0;
 			packageReferences = (
 				006A511B2C6FDAC100EB53C8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				006A51212C6FF60600EB53C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				006A51352C70101200EB53C8 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
 			);
 			productRefGroup = 00D88DD22C6E3C6E00B3FAF0 /* Products */;
@@ -696,7 +689,6 @@
 				006A51092C6F762400EB53C8 /* popular.json in Resources */,
 				00D88DD92C6E3C7000B3FAF0 /* Assets.xcassets in Resources */,
 				0096497F2C6E86B700B78F05 /* now-playing.json in Resources */,
-				006A51272C6FFCB600EB53C8 /* GoogleService-Info.plist in Resources */,
 				009649812C6E86B700B78F05 /* top-rated.json in Resources */,
 				009649802C6E86B700B78F05 /* upcoming.json in Resources */,
 			);
@@ -1126,14 +1118,6 @@
 				minimumVersion = 7.12.0;
 			};
 		};
-		006A51212C6FF60600EB53C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 11.0.0;
-			};
-		};
 		006A51352C70101200EB53C8 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SvenTiigi/YouTubePlayerKit";
@@ -1149,11 +1133,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 006A511B2C6FDAC100EB53C8 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		006A51222C6FF60600EB53C8 /* FirebaseAppDistribution-Beta */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 006A51212C6FF60600EB53C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseAppDistribution-Beta";
 		};
 		006A51362C70101200EB53C8 /* YouTubePlayerKit */ = {
 			isa = XCSwiftPackageProductDependency;
